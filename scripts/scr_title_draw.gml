@@ -1,0 +1,1 @@
+draw_sprite(spr_menu_top,0,0,0);
