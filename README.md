@@ -1,5 +1,5 @@
 ## GMDE Readme v0.0
-TyrZ Game Maker Danmaku Engine Version 0.95
+#### Game Maker Danmaku Engine Version 0.95
 
 Based off Touhou Project
 
