@@ -1,7 +1,7 @@
 # GMDE Readme v0.0
 ### Game Maker Danmaku Engine Version 0.95
 
-Based off Touhou Project
+The aim of this project is to create an open source Bullet Hell shooter game and allow others to use the engine as a base for their own games.
 
 ####Engine Features:
 
