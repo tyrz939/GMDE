@@ -1,9 +1,9 @@
-## GMDE Readme v0.0
-#### Game Maker Danmaku Engine Version 0.95
+# GMDE Readme v0.0
+### Game Maker Danmaku Engine Version 0.95
 
 Based off Touhou Project
 
-Engine Features:
+####Engine Features:
 
 - Replay System (& idle Demo Play)
 - Command Line Interpreter for development/debugging needs
