@@ -202,10 +202,22 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
 {
     direction += 45;
     image_angle = direction;
+    
     /*==========================
     MOVEMENT SPEED FILTER SYSTEM
     ==========================*/
-    if start_counter == 0{
+    
+    // Round X,Y before saving replay.
+    if cur_stage != global.stage || global.replay_save_state {
+        cur_stage = global.stage
+        global.player_x = round(global.player_x);
+        global.player_y = round(global.player_y);
+        global.graze = round(global.graze);
+        global.rank = round(global.rank);
+        if global.replay{
+            global.replay_save_state = false;
+        }
+    }else if start_counter == 0{
         // Diag speed normalizer
         
         if up==true xor down==true{
@@ -274,16 +286,6 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
     
     x = global.player_x;
     y = global.player_y;
-    
-    // Round X,Y before saving replay.
-    if cur_stage != global.stage || global.replay_save_state {
-        cur_stage = global.stage
-        global.player_x = round(global.player_x);
-        global.player_y = round(global.player_y);
-        if global.replay{
-            global.replay_save_state = false;
-        }
-    }
 
     /*========================
         ORBS AND SHOOTING

@@ -230,10 +230,10 @@ if draw == true{
     var dist = distance_to_point(end_x, end_y);
     if global.shift{
         var laser_width = 1;
-        var focus_alpha = 1;
+        var focus_alpha = 0.75;
     }else{
         var laser_width = 0.6;
-        var focus_alpha = 1;
+        var focus_alpha = 0.6;
     }
     for(var o = 1; o &lt;= dist; o += 10){
         var xd = x + lengthdir_x(o, direction);

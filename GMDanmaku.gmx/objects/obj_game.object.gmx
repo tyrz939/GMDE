@@ -54,15 +54,6 @@
     
     global.shake_screen = false;
     
-    global.orb1_x = noone;
-    global.orb1_y = noone;
-    global.orb2_x = noone;
-    global.orb2_y = noone;
-    global.orb3_x = noone;
-    global.orb3_y = noone;
-    global.orb4_x = noone;
-    global.orb4_y = noone;
-
 // Misc
 
     scr_particles(); // Sets particle types
@@ -98,23 +89,18 @@
 
 // Creates the replay recorder object
 
-    if global.replay == false &amp;&amp; !instance_exists(obj_replay_recorder)
-    {
+    if global.replay == false &amp;&amp; !instance_exists(obj_replay_recorder) {
         action_create_object(obj_replay_recorder,0,0);
     }
-    if global.demo_play == true
-    {
+    if global.demo_play == true {
         action_create_object(obj_demo_play,0,0);
     }
 
 // Stops menu music playing unless is demo mode
 
-    if global.demo_play == false
-    {
+    if global.demo_play == false {
         audio_stop_sound(bgm_menu);
     }
-
-
 </string>
           </argument>
         </arguments>

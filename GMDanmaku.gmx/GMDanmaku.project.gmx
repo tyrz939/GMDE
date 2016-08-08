@@ -84,11 +84,18 @@
         <sprite>sprites\spr_fairy1</sprite>
         <sprite>sprites\spr_fairy2</sprite>
         <sprite>sprites\spr_fairy3</sprite>
-        <sprite>sprites\spr_spiny1</sprite>
-        <sprite>sprites\spr_spiny2</sprite>
-        <sprite>sprites\spr_spiny3</sprite>
         <sprites name="Stg2 rocks">
           <sprite>sprites\spr_stg2_rock0</sprite>
+        </sprites>
+        <sprites name="Spinny things">
+          <sprite>sprites\spr_spiny3</sprite>
+          <sprite>sprites\spr_spiny2</sprite>
+          <sprite>sprites\spr_spiny1</sprite>
+          <sprite>sprites\spr_spiny4</sprite>
+          <sprite>sprites\spr_spiny5</sprite>
+          <sprite>sprites\spr_spiny6</sprite>
+          <sprite>sprites\spr_spiny7</sprite>
+          <sprite>sprites\spr_spiny8</sprite>
         </sprites>
       </sprites>
       <sprites name="Deaths">
@@ -401,6 +408,15 @@
         <object>objects\obj_stage2</object>
         <object>objects\obj_BG_stage2</object>
       </objects>
+      <objects name="Stage 3">
+        <object>objects\obj_stage3</object>
+      </objects>
+      <objects name="Stage 4">
+        <object>objects\obj_stage4</object>
+      </objects>
+      <objects name="Stage 5">
+        <object>objects\obj_stage5</object>
+      </objects>
       <objects name="Stage 6">
         <object>objects\obj_stage6</object>
         <object>objects\obj_3dBG_stage6</object>
@@ -465,7 +481,6 @@
         <objects name="Stage 1">
           <object>objects\obj_stg1_greenthing</object>
           <object>objects\obj_stg1_shot0</object>
-          <object>objects\obj_stg1_shot1</object>
         </objects>
         <objects name="Stage 2">
           <object>objects\obj_stg2_rock</object>

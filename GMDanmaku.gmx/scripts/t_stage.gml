@@ -9,6 +9,15 @@ if exec[1] == "test"{
 }else if exec[1] == "2"{
     go = true;
     global.level = obj_stage2; // Stage
+}else if exec[1] == "3"{
+    go = true;
+    global.level = obj_stage3; // Stage
+}else if exec[1] == "4"{
+    go = true;
+    global.level = obj_stage4; // Stage
+}else if exec[1] == "5"{
+    go = true;
+    global.level = obj_stage5; // Stage
 }else if exec[1] == "6"{
     go = true;
     global.level = obj_stage6; // Stage

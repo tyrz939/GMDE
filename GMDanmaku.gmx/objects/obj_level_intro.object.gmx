@@ -92,16 +92,20 @@ if timer==0 {instance_destroy();}
           <argument>
             <kind>1</kind>
             <string>display_set_gui_size(1280,960);
-if (timer&lt;=240)
-    {
+
+if timer &lt;= 240 {
+    var xvstart = global.xvstart * 2;
+    var yvstart = global.yvstart * 2;
+    var xview = global.xview * 2;
+    var yview = global.yview * 2;
     draw_set_halign(fa_middle);
     draw_set_font(font2);
     draw_set_alpha(alpha);
-    draw_text_colour(450,430,string(text1),c_yellow,c_yellow,c_yellow,c_yellow,alpha);//Stage num Text
+    draw_text_colour(xvstart + (xview / 2), yvstart + (yview / 2) - 60,string(text1),c_yellow,c_yellow,c_yellow,c_yellow,alpha);//Stage num Text
     draw_set_font(font3);
     draw_set_color(c_white);
-    draw_text_transformed(450,490,string(text2),scale,spin,0);//Stage name Text
-    }
+    draw_text_transformed(xvstart + (xview / 2), yvstart + (yview / 2),string(text2),scale,spin,0);//Stage name Text
+}
 draw_set_alpha(1);
 </string>
           </argument>

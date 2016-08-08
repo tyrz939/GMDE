@@ -126,9 +126,6 @@ stage = 0;
         global.replay_save_state = false;
         pos_move = true;
         
-        global.graze = round(global.graze);
-        global.rank = round(global.rank);
-        
         state[0, states_saved] = global.player_x;
         state[1, states_saved] = global.player_y;
         state[2, states_saved] = global.life;

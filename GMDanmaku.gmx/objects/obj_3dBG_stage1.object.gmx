@@ -94,8 +94,8 @@ if global.pause==0{
     y += 16;
     if y &gt;= 4096 {y -= 4096;}
     
-    //d += 0.1;
-    //direction = 270 + lengthdir_y(15,d);
+    d += 0.05;
+    direction = 270 + lengthdir_y(15,d);
     
     // 3D Demo
     //direction = 270 - ((global.player_x/20)-11.25)
@@ -159,9 +159,9 @@ d3d_set_projection_ext(x,y,z,xto,yto,zto,0,0,1,fov,ratio,1,32000);
 // 3D Demo
 
 draw_set_alpha(1);
-d3d_draw_floor(-1536,1024*9,0,1536,1024*32,0,layer2,2,21); // Ice
-d3d_draw_floor(-1536,1024*8,0,1536,1024*9,0,layer1,2,1); // Snow &gt; Ice transition
-d3d_draw_floor(-1536,0,0,1536,1024*8,0,layer0,2,8); // Snow
+d3d_draw_floor(-3072,1024*9,0,3072,1024*32,0,layer2,4,21); // Ice
+d3d_draw_floor(-3072,1024*8,0,3072,1024*9,0,layer1,4,1); // Snow &gt; Ice transition
+d3d_draw_floor(-3072,0,0,3072,1024*8,0,layer0,4,8); // Snow
 
 
 // End 3D

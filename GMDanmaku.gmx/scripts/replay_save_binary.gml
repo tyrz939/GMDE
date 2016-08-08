@@ -153,6 +153,8 @@ if global.pause==1 && replay_save==true{
         file_bin_write_byte(file, p1);
     }
     
+    // De-sync Detection Code
+    
     // Frame & Input save loop
     for(var i = 0; i < pos; i++){
         // Frame Count

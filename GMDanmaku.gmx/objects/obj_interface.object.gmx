@@ -263,7 +263,7 @@ if global.debug==true
     dbY += 20;
     draw_text(dbX,dbY,"Time: " + string(global.seconds)); //Timer Display
     dbY += 20;
-    draw_text(dbX,dbY,"Real FPS: " + string(fps_real)); //Max FPS CPU can do
+    draw_text(dbX,dbY,"Real FPS: " + string(fps_real)); //Max FPS CPU can do without GPU limitations????
     dbY += 20;
     draw_text(dbX,dbY,"Rank: " + string(global.rank)); //Rank
     dbY += 20;
