@@ -59,9 +59,8 @@ image_yscale = 0.75;
     if collision_circle(x, y, pickup_dist, global.player, false, true) {
         audio_stop_sound(sfx_block);
         audio_play_sound(sfx_block,1,false);
-        add = (round(51200-(y*112))); 
+        add = (round(50-(y * 0.1))); 
         global.score += add;
-        global.rank+=0.03;
         global.point+=1;
         instance_destroy();
         with instance_create(x,y,obj_Pup_text) {

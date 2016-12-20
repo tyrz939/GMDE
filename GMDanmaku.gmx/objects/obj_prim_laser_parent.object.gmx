@@ -119,7 +119,6 @@ for(var i = 0; i &lt; a; i++)
     {
         global.grazeSlow = 20;
         global.graze += 0.01;
-        global.rank += 0.0004;
         global.score += 5;
         obj[5,i] = true;
         if d &lt; 0.7 * obj[2,i] &amp;&amp; obj[4,i]

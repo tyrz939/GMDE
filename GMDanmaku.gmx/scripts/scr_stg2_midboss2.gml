@@ -27,7 +27,7 @@ if timer == wait0
     wait0 += 9 - (global.difficulty * 2);
     spd0 = 5;
     re0 = 5;
-    dir0 = irandom(359);
+    dir0 = irandom_sync(359);
     repeat(re0)
     {
         shot_create( obj_ball, BLUE,x+lengthdir_x(dist,dir0),y+lengthdir_y(dist,dir0),spd0,dir0);

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>1100</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_background_parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -45,7 +45,7 @@ timer = 0;
 
 // Particles
 particle1 = part_type_create();
-part_type_shape(particle1,pt_shape_sphere);
+part_type_shape(particle1,pt_shape_disk);
 part_type_size(particle1,0.05,0.1,0,0);
 part_type_scale(particle1,1,1);
 part_type_alpha1(particle1,0.5);

@@ -15,7 +15,7 @@ repeat(8)
             }
         if timer>=0
             {
-            global.score+=dmg;
+            global.score += dmg * 0.1;
             hp-=dmg;
             }
         }
@@ -23,7 +23,7 @@ repeat(8)
 
 while laser_hit > 1{
     if timer>=0{
-        global.score += global.laserdmg;
+        global.score += global.laserdmg * 0.1;
         hp -= global.laserdmg;
         }
     laser_hit -= 1;
@@ -42,7 +42,7 @@ if global.bomb==true && timer>=0
             {
             other.dmg=dmg;
             }
-        global.score+=dmg;
+        global.score+=dmg * 0.1;
         hp-=dmg;
         }
     }

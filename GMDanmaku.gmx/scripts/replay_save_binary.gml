@@ -137,18 +137,16 @@ if global.pause==1 && replay_save==true{
         file_bin_write_byte(file, s1);
         file_bin_write_byte(file, s2);
         file_bin_write_byte(file, s3);
-        // Rank save
-        file_bin_write_byte(file, state[10, i]);
         // Shot GCD
-        file_bin_write_byte(file, state[11, i]);
+        file_bin_write_byte(file, state[10, i]);
         // Graze count
-        var g0 = floor(state[12, i] / 256);
-        var g1 = state[12, i] - (g0 * 256);
+        var g0 = floor(state[11, i] / 256);
+        var g1 = state[11, i] - (g0 * 256);
         file_bin_write_byte(file, g0);
         file_bin_write_byte(file, g1);
         // Point items collected
-        var p0 = floor(state[13, i] / 256);
-        var p1 = state[13, i] - (p0 * 256);
+        var p0 = floor(state[12, i] / 256);
+        var p1 = state[12, i] - (p0 * 256);
         file_bin_write_byte(file, p0);
         file_bin_write_byte(file, p1);
     }
@@ -169,12 +167,12 @@ if global.pause==1 && replay_save==true{
         
         // Input
         inp = 0;
-        inp += replay[up, i] *64;
-        inp += replay[down, i] *32;
-        inp += replay[left, i] *16;
-        inp += replay[right, i] *8;
-        inp += replay[focus, i] *4;
-        inp += replay[shoot, i] *2;
+        inp += replay[up, i] <<6;
+        inp += replay[down, i] <<5;
+        inp += replay[left, i] <<4;
+        inp += replay[right, i] <<3;
+        inp += replay[focus, i] <<2;
+        inp += replay[shoot, i] <<1;
         inp += replay[bomb, i];
         file_bin_write_byte(file, inp);
     }

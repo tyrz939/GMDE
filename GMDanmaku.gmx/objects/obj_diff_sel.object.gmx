@@ -34,8 +34,9 @@ space = 50;
 mpos = 1;
 ypos = 480-256;
 mov0 = true;
-mov1 = 4;
+dir = 0;
 tmp = 480-(256 * mpos);
+cd = 0;
 
 //For flashy selection
 alpha = 1;
@@ -101,22 +102,19 @@ if push == 1
 }
 
 tmp = 480-(256 * mpos);
-if move != 0
-{
-    mov0 = true;
-    mov1 = abs(tmp - ypos)/30;
+
+if move != 0 {
+    frames = 30;
+    dir = 1
+    y_mov = tmp - ypos;
+    y_start = ypos;
 }
-if ypos &lt; tmp -10
-{
-    ypos += mov1;
-}
-else if ypos &gt; tmp +10
-{
-    ypos -= mov1;
-}
-else
-{
-    mov1 = 0;
+if dir != 0 {
+    ypos = y_start + (y_mov * sin (dir * pi / 180));
+    dir += 90 / frames;
+    if dir &gt;= 90 {
+        dir = 0;
+    }
 }
 </string>
           </argument>
@@ -146,7 +144,7 @@ else
         {col = 255;}
     else
         {col = 100;}
-    draw_sprite_ext(spr_diff,i,640,ypos + (256*i),1,1,0,make_color_rgb(col,col,col),1);
+    draw_sprite_ext(spr_diff,i,640,round(ypos) + (256*i),1,1,0,make_color_rgb(col,col,col),1);
 }
 </string>
           </argument>

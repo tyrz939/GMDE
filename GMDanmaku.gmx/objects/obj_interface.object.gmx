@@ -44,12 +44,7 @@ T = global.yvstart;
 B = global.yvstart + global.yview;
 
 // Loads previous High Scores
-switch global.difficulty{
-    case 0: hiscore=global.highscore0; break;
-    case 1: hiscore=global.highscore1; break;
-    case 2: hiscore=global.highscore2; break;
-    case 3: hiscore=global.highscore3; break;
-}
+hiscore = global.hiscore[global.difficulty];
     
 // Color for Score/High Score text
 switch global.difficulty{
@@ -62,6 +57,7 @@ switch global.difficulty{
 // Misc
 HSupdate=false; // True when score &gt; high score
 player=0; // For drawing lifes left
+rnd_check = 0 // Random checker
 </string>
           </argument>
         </arguments>
@@ -128,16 +124,11 @@ draw_set_alpha(1);
 if global.score &gt; hiscore &amp;&amp; !global.replay{
     hiscore = global.score;
     HSupdate = true;
-    switch global.difficulty{
-        case 0: global.highscore0 = global.score; break;
-        case 1: global.highscore1 = global.score; break;
-        case 2: global.highscore2 = global.score; break;
-        case 3: global.highscore3 = global.score; break;
-    }
+    global.hiscore[global.difficulty] = global.score;
 }
 
-anchXhs = (global.xvstart * 2) + 150;
-anchXs = (global.xvstart * 2) + (global.xview * 2) - 150;
+anchXhs = 120;
+anchXs = 1280 - 120;
 anchY = 15;
 
 draw_set_halign(fa_middle);
@@ -179,9 +170,9 @@ var mnx = 1064; // Numbers for above
 draw_text(mtx,mty,"Player");
 for(i = 0; i &lt; 8; i++){
     if i &lt; player{
-        draw_sprite_ext(spr_gui_star, 0, mnx + (i*28), mty+40, 1, 1, 0, make_colour_rgb(150,50,50), 1);
+        draw_sprite_ext(spr_gui_heart, 0, mnx + (i*28), mty+40, 1, 1, 0, make_colour_rgb(200,0,60), 1);
     }else{
-        draw_sprite_ext(spr_gui_star, 0, mnx + (i*28), mty+40, 1, 1, 0, make_colour_rgb(40,0,0), 1);
+        draw_sprite_ext(spr_gui_heart, 0, mnx + (i*28), mty+40, 1, 1, 0, make_colour_rgb(50,0,30), 1);
     }
 }
 
@@ -191,9 +182,9 @@ draw_text(mtx,mty,"Bombs");
 
 for(i = 0; i &lt; 8; i++){
     if i &lt; global.bombs{
-        draw_sprite_ext(spr_gui_star, 0, mnx + (i*28), mty+40, 1, 1, 0, make_colour_rgb(50,150,50), 1);
+        draw_sprite_ext(spr_gui_star, 0, mnx + (i*28), mty+40, 1, 1, 0, make_colour_rgb(0,200,100), 1);
     }else{
-        draw_sprite_ext(spr_gui_star, 0, mnx + (i*28), mty+40, 1, 1, 0, make_colour_rgb(0,40,0), 1);
+        draw_sprite_ext(spr_gui_star, 0, mnx + (i*28), mty+40, 1, 1, 0, make_colour_rgb(0,50,25), 1);
     }
 }
 
@@ -252,7 +243,7 @@ if global.debug==true
     var dbY = 600;
     draw_set_color(c_black);
     draw_set_alpha(0.75);
-    draw_rectangle(dbX -10,dbY,dbX + 200,dbY + 260,false)
+    draw_rectangle(dbX -10,dbY,dbX + 200,dbY + 220,false)
     dbY += 20;
     draw_set_color(c_white);
     draw_set_alpha(1);
@@ -264,10 +255,6 @@ if global.debug==true
     draw_text(dbX,dbY,"Time: " + string(global.seconds)); //Timer Display
     dbY += 20;
     draw_text(dbX,dbY,"Real FPS: " + string(fps_real)); //Max FPS CPU can do without GPU limitations????
-    dbY += 20;
-    draw_text(dbX,dbY,"Rank: " + string(global.rank)); //Rank
-    dbY += 20;
-    draw_text(dbX,dbY,"Multiplier: " + string(global.adjust)); //Global Multiplier for Difficulty
     dbY += 20;
     draw_text(dbX,dbY,"Frame: " + string(global.frame)); //Global Frame counter
     dbY += 20;

@@ -52,14 +52,14 @@ instance_create(0, 0, obj_transition);
 
 // Particles
 particle1 = part_type_create();
-part_type_shape(particle1,pt_shape_snow);
-part_type_size(particle1,0.5,1,0,0);
+part_type_shape(particle1,pt_shape_disk);
+part_type_size(particle1,0.05,0.2,0,0);
 part_type_scale(particle1,1,1);
-part_type_alpha3(particle1,0,1,0);
+part_type_alpha3(particle1,0,0.75,0);
 part_type_speed(particle1,1,2,0,0);
-part_type_direction(particle1,260,280,0,0);
-part_type_orientation(particle1,0,359,-1+random(2),0,1);
-part_type_blend(particle1,false);
+part_type_direction(particle1,270,300,0,0);
+part_type_orientation(particle1,0,359,0,0,1);
+part_type_blend(particle1,true);
 part_type_life(particle1,360,720);
 </string>
           </argument>
@@ -94,15 +94,17 @@ else if (global.reset=1) &amp;&amp; (spawn=true) {spawn=false; action_create_obj
 if (global.reset=0) &amp;&amp; (timer =0)
     {
     if global.bgm == 1 &amp;&amp; global.demo_play == false
-        {audio_play_sound(bgm_menu,10,true);}
+        {music_start(bgm_menu);}
     global.reset=1;
     }
 
 //Particles
 if particle_timer == spawn_particle
     {
-    spawn_particle += 5;
-    part_particles_create_colour(global.Psysm,random(1280),(random(300)-150),particle1,make_colour_rgb(255,175,175),1);
+    spawn_particle += 1;
+    repeat 2 {
+        part_particles_create_colour(global.Psysm,random(1280 + 150) -150,(random(300)-150),particle1, c_white, 1);
+    }
 }
 particle_timer += 1;
 

@@ -25,16 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//  Variables for Scoring and Difficulty Adjustments
+            <string>alpha = 0;
+x = 1280;
+xstart = x;
+y = 910;
 
-global.rank=0;
-if !global.replay{
-    global.score = 0;
+timer = 0;
+dir = 1;
+frames = 30;
+if room = room_ingame {
+    target = 1030 - x;
+} else {
+    target = 1250 - x;
 }
-global.graze=0;
-
-
-difficulty = global.difficulty + 1; // Difficulty *1.0 to *1.6 (60% boost)
 </string>
           </argument>
         </arguments>
@@ -57,19 +60,60 @@ difficulty = global.difficulty + 1; // Difficulty *1.0 to *1.6 (60% boost)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.pause==0{
-
-    round(global.rank);
-    
-    // Rank Limits
-    if (global.rank&lt;0) {global.rank=0;}
-    if (global.rank&gt;255) {global.rank=255;}
-    
-    global.rank = 0; // TEMP, TO DO
-    
-    // Global Difficulty Adjustment
-    global.adjust=1; // To do? or remove?
+            <string>if global.pause == 0 || room != room_ingame{
+    if dir != 0 {
+        x = xstart + (target * sin (dir * pi / 180));
+        dir += 90 / frames;
+        if dir &gt;= 90 {
+            dir = 0;
+        }
+    } else {
+        timer++;
+        if timer == 300 {
+            
+        }
+        if timer &gt; 300 {
+            image_alpha -= 1/30;
+        }
+        if timer &gt; 330 {
+            instance_destroy();
+        }
+    }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_halign(fa_right);
+draw_set_font(font_debug);
+
+var text = string("BGM: " + music)
+
+draw_set_color(c_black);
+draw_set_alpha(0.5 * image_alpha);
+draw_text(x+1, y+2, text);
+
+draw_set_color(c_white);
+draw_set_alpha(1 * image_alpha);
+draw_text(x, y, text);
 </string>
           </argument>
         </arguments>

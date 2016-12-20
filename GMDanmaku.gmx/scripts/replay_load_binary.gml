@@ -45,7 +45,7 @@ if file_exists(working_directory + string(global.rpl)){
     if states1 >= 8 {save_points[10] = true; states1 -= 8;} else {save_points[10] = false;}
     if states1 >= 4 {save_points[11] = true; states1 -= 4;} else {save_points[11] = false;}
     if states1 >= 2 {save_points[12] = true; states1 -= 2;} else {save_points[12] = false;}
-    if states1 >= 1 {save_points[13] = true; states1 -= 2;} else {save_points[13] = false;}
+    if states1 >= 1 {save_points[13] = true;} else {save_points[13] = false;}
     
     // How long in frames
     global.rpllength = file_bin_read_byte(file) *65536;
@@ -71,7 +71,7 @@ if file_exists(working_directory + string(global.rpl)){
     global.player_y = y0 + y1;
     
     // Read Saved States
-    for(var i = 0; i <= 13; i++){
+    for(var i = 0; i <= 12; i++){
         if save_points[i] == true{
             // Player X, Y
             state[0, i] = file_bin_read_byte(file) * 256;
@@ -101,16 +101,14 @@ if file_exists(working_directory + string(global.rpl)){
             state[9, i] += file_bin_read_byte(file) * 65536;
             state[9, i] += file_bin_read_byte(file) * 256;
             state[9, i] += file_bin_read_byte(file);
-            // Rank
-            state[10, i] = file_bin_read_byte(file);
             // Shot GCD
-            state[11, i] = file_bin_read_byte(file);
+            state[10, i] = file_bin_read_byte(file);
             // Graze count
+            state[11, i] = file_bin_read_byte(file) * 256;
+            state[11, i] += file_bin_read_byte(file);
+            // Point items collected
             state[12, i] = file_bin_read_byte(file) * 256;
             state[12, i] += file_bin_read_byte(file);
-            // Point items collected
-            state[13, i] = file_bin_read_byte(file) * 256;
-            state[13, i] += file_bin_read_byte(file);
         }
     }
     

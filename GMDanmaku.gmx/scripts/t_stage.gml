@@ -37,7 +37,7 @@ if go{
     global.char = 0;
     global.demo_play = false;
     global.replay = false;
-    global.difficulty = 3;
+    global.difficulty = 1;
     global.start_game = true;
     scr_start(); // Loads variables
     global.term = false;

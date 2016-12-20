@@ -58,10 +58,9 @@ if collision_circle(x, y, pickup_dist, global.player, false, true)
     {
     audio_stop_sound(sfx_block);
     audio_play_sound(sfx_block,1,false);
-    add = 100000;
+    add = 350;
     global.score += add;
     if global.bombs &lt; 8 {global.bombs+=1;}
-    global.rank+=3;
     instance_destroy();
     with instance_create(x,y,obj_Pup_text)
         {

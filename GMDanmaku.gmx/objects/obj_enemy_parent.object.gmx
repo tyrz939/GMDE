@@ -29,8 +29,8 @@
 timer=0;
 closest=false;
 
-spd=speed;
-p=1;
+spd = speed;
+speed = 0;
 dir=0;
 
 hitbox = sprite_get_width(sprite_index)*0.6;
@@ -86,8 +86,12 @@ flash_timer = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Collision &amp; Take Damage
-scr_npc_collision(); // Collision System
+            <string>// Movement
+x += (spd * cos (direction * pi / 180)) * global.gamespeed;
+y += (spd * -sin (direction * pi / 180)) * global.gamespeed;
+
+// Collision &amp; Take Damage
+scr_npc_collision();
 
 timer++;
 

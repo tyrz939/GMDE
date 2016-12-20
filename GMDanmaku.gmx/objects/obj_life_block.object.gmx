@@ -57,14 +57,13 @@ event_inherited();
 if collision_circle(x, y, pickup_dist, global.player, false, true)
     {
     audio_play_sound(sfx_life,1,false);
-    add = 300000;
+    add = 1000;
     global.score += add;
     if global.life &lt; 8
         {
         global.life+=1;
         instance_create(0,0,obj_life_text);
         }
-    global.rank+=3;
     instance_destroy();
     with instance_create(x,y,obj_Pup_text)
         {

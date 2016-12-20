@@ -4,8 +4,7 @@ if hp <=0
     instance_destroy();
     audio_stop_sound(sfx_enemy_die);
     audio_play_sound(sfx_enemy_die,1,false);
-    global.score+=2000
-    global.rank+=0.2;
+    global.score+=50
     if global.bomb == false
         {
         if global.pow<4 //Spawn power block if player isn't at max power.

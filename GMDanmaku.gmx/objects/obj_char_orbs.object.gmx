@@ -159,7 +159,7 @@ heat = 0;
             }
         }
     }
-    draw_sprite_ext(sprite_index,image_index,round(x),round(y),image_xscale,image_yscale,image_angle,make_colour_rgb(255, 255 - round(heat/3), 255 -heat),image_alpha);
+    draw_sprite_ext(sprite_index,image_index,round(x),round(y),image_xscale,image_yscale,image_angle,make_colour_rgb(255, 255 -heat, 255 -heat),image_alpha);
 }
 /*
 draw_set_font(font_debug);

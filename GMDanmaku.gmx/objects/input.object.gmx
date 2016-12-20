@@ -68,8 +68,10 @@
           <argument>
             <kind>1</kind>
             <string>// Alt F4 - Quit
-if (keyboard_check(vk_alt)) &amp;&amp; (keyboard_check(vk_f4))
-    {global.quit=true; script_execute(scr_save);}
+if (keyboard_check(vk_alt)) &amp;&amp; (keyboard_check(vk_f4)){
+    scr_save();
+    game_end();
+}
 
 /*
 Sets if "pressed" or not

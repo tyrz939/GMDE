@@ -29,7 +29,7 @@
 gcd=0;
 
 speed=2;
-direction = 270 + (irandom(30) - 15);
+direction = 270 + (irandom_sync(30) - 15);
 
 event_inherited();
 death_col = c_blue;
@@ -66,16 +66,18 @@ y -= 15;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.pause==0{image_speed=0.2; speed=spd;
+            <string>if global.pause==0{image_speed=0.2;
+
+event_inherited();
 
 //"AI"... lol
 
 if timer == wait1{
     wait1 += 60;
-    speed = 2
+    spd = 2
     direction = point_direction(x, y, global.player_x, global.player_y);
 }else if timer == wait1 - 30{
-    speed = 0;
+    spd = 0;
 }
     
 //Shooting!
@@ -97,12 +99,11 @@ if wait0 == timer{
     action_create_object_motion(shot, x + lengthdir_x(sep, dir-90), y + lengthdir_y(sep, dir-90), spd1, dir);
 }
 
-image_angle = irandom(359);
+image_angle = irandom_sync(359);
 
-event_inherited();
 scr_npc_die0(); //Death
 
-spd=speed; p=1;}else{if p=1 {p=0;spd=speed; speed=0;image_speed=0;}}
+}else{image_speed=0}
 </string>
           </argument>
         </arguments>

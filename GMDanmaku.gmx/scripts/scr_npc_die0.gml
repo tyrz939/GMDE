@@ -4,8 +4,7 @@ if hp <=0
     instance_destroy();
     audio_stop_sound(sfx_enemy_die);
     audio_play_sound(sfx_enemy_die,1,false);
-    global.score+=100
-    global.rank+=0.05;
+    global.score+=10
     if global.bomb == false
     {
         var i = irandom(1)

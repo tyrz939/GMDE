@@ -25,13 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>menu[0] = "Resolution";
-menu[1] = "BGM";
-menu[2] = "Full Screen";
-menu[3] = "Vsync";
-menu[4] = "CRT Effect";
-menu[5] = "Key Rebinding";
-menu[6] = "Back";
+            <string>menu[0] = "BGM";
+menu[1] = "Vsync";
+menu[2] = "CRT Effect";
+menu[3] = "Key Rebinding";
+menu[4] = "Back";
 
 space = 50;
 mpos = 0;
@@ -40,12 +38,6 @@ mpos = 0;
 alpha = 1;
 alpha_dir = 0;
 
-res[0] = "640x480";
-res[1] = "960x720";
-res[2] = "1280x960";
-
-rpos = global.resolution;
-
 
 //On/Off part
 if global.bgm == 1
@@ -53,20 +45,15 @@ if global.bgm == 1
 else
     {on[0] = "Off";}
 
-if global.fullscreen == 1
+if global.vsync == 1
     {on[1] = "On";}
 else
     {on[1] = "Off";}
 
-if global.vsync == 1
+if global.scanlines == 1
     {on[2] = "On";}
 else
     {on[2] = "Off";}
-
-if global.scanlines == 1
-    {on[3] = "On";}
-else
-    {on[3] = "Off";}
 </string>
           </argument>
         </arguments>
@@ -91,8 +78,7 @@ else
             <kind>1</kind>
             <string>scr_menu_step();
 
-if input.bomb_press
-{
+if input.bomb_press {
     scr_save();
     instance_destroy();
     instance_activate_object(obj_menu);
@@ -101,95 +87,39 @@ if input.bomb_press
     exit;
 }
 
-if mpos==0 //All for the resolution thingy
-{
-    move = 0;
-    move -= max(input.left,0);
-    move += max(input.right,0);
-    
-    if move !=0
-    {
-        audio_stop_sound(sfx_menu_move);
-        audio_play_sound(sfx_menu_move,1,false);
-        rpos += move;
-        if rpos &lt; 0
-            {rpos = array_length_1d(res) -1;}
-        if rpos &gt; array_length_1d(res) -1
-            {rpos = 0;}
-    }
-}
-
 var push = 0;
 push = max(input.shoot_press,0);
 
-if push == 1
-{
+if push == 1 {
     audio_stop_sound(sfx_menu_sel);
     audio_play_sound(sfx_menu_sel,1,false);
-    switch mpos
-    {
-        case 0: //Resolution
-            if rpos == 0
-            {
-                window_set_size(640,480);
-                global.resolution=0;
-            }
-            if rpos == 1
-            {
-                window_set_size(960,720);
-                global.resolution=1;
-            }
-            if rpos == 2
-            {
-                window_set_size(1280,960);
-                global.resolution=2;
-            }
-            break;
-        case 1: //BGM
-            if global.bgm == 1
-            {
+    switch mpos {
+        case 0: //BGM
+            if global.bgm == 1 {
                 global.bgm = 0;
                 audio_stop_all();
-            }
-            else 
-            {
+            } else {
                 global.bgm = 1;
                 audio_play_sound(bgm_menu,10,true);
             }
             break;
-        case 2: //Full Screen
-            if global.fullscreen == 1
-            {
-                global.fullscreen = 0;
-                window_set_fullscreen(false);
-            }
-            else
-            {
-                global.fullscreen = 1;
-                window_set_size(display_get_width(),display_get_height());
-                window_set_fullscreen(true);
-            }
-            break;
-        case 3: //VSync
-            if global.vsync == 1
-            {
+        case 1: //VSync
+            if global.vsync == 1 {
                 display_reset(0, false);
                 global.vsync=0;
-            }
-            else
-            {
+            } else {
                 display_reset(0, true);
                 global.vsync=1;
             }
             break;
-        case 4: //Scanlines
+        case 2: //Scanlines
             global.scanlines = !global.scanlines;
             break;
-        case 5: //Rebind Menu
+        case 3: //Rebind Menu
             instance_deactivate_object(self);
             instance_create(x,y,obj_rebind_menu);
             break;
-        case 6: //Back
+        case 4: //Back
             scr_save();
             instance_destroy();
             instance_activate_object(obj_menu);
@@ -203,20 +133,15 @@ if global.bgm == 1
 else
     {on[0] = "Off";}
 
-if global.fullscreen == 1
+if global.vsync == 1
     {on[1] = "On";}
 else
     {on[1] = "Off";}
 
-if global.vsync == 1
+if global.scanlines == 1
     {on[2] = "On";}
 else
     {on[2] = "Off";}
-
-if global.scanlines == 1
-    {on[3] = "On";}
-else
-    {on[3] = "Off";}
 </string>
           </argument>
         </arguments>
@@ -243,40 +168,13 @@ else
 
 scr_menu_draw();
 
-for (m1 =0; m1 &lt; array_length_1d(on); m1++)
-{
+for (m1 = 0; m1 &lt; array_length_1d(on); m1++) {
     draw_set_alpha(0.5);
     draw_set_colour(c_black);
-    draw_text(x+250+2,y+((m1*space)+space)+2,string(on[m1]));
+    draw_text(x+250+2,y+(m1*space)+2,string(on[m1]));
     draw_set_alpha(1);
     draw_set_colour(c_gray);
-    draw_text(x+250,y+((m1*space)+space),string(on[m1]));
-}
-
-for (r =0; r &lt; array_length_1d(res); r++)
-{
-    //Resolution Menu Draw//Menu Shadow
-    draw_set_alpha(0.5);
-    draw_set_colour(c_black);
-    draw_text(x+(250+(space*(r*3)))+2,y+2,string(res[r]));
-    draw_set_alpha(1);
-    draw_set_colour(c_gray);
-    draw_text(x+(250+(space*(r*3))),y,string(res[r]));
-    //Pulsing Selection
-    if mpos=0
-    {
-        draw_set_alpha(alpha);
-        draw_set_colour(global.text_pulse_color);
-        if r == rpos
-            {draw_text(x+(250+(space*(r*3))),y,string(res[r]));}
-        draw_set_alpha(1);
-    }
-    else
-    {
-        draw_set_colour(global.text_pulse_color);
-        if r == rpos
-            {draw_text(x+(250+(space*(r*3))),y,string(res[r]));}
-    }
+    draw_text(x+250,y+(m1*space),string(on[m1]));
 }
 </string>
           </argument>

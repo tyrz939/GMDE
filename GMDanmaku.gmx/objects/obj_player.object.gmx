@@ -52,12 +52,6 @@
     shoot_press=false;
     bomb_press=false;
 
-// Graze Flake Values
-
-    scale=0.5;
-    r1=0;
-    r2=10;
-
 // Replay Loader
 
     if global.replay==true{
@@ -114,15 +108,14 @@ if global.replay &amp;&amp; !global.pause &amp;&amp; load_state == true{
     global.bombs = state[3, l];
     global.pow = state[4, l];
     global.frame = state[5, l];
-    global.seconds = state[6, l];
     global.level = state[7, l];
     instance_create(0,0,global.level);
+    global.seconds = state[6, l];
     global.levelpos = state[8, l];
     global.score = state[9, l];
-    global.rank = state[10, l];
-    wep_gcd = state[11, l];
-    global.graze = state[12, l];
-    global.point = state[13, l];
+    wep_gcd = state[10, l];
+    global.graze = state[11, l];
+    global.point = state[12, l];
 }
 </string>
           </argument>
@@ -213,7 +206,6 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
         global.player_x = round(global.player_x);
         global.player_y = round(global.player_y);
         global.graze = round(global.graze);
-        global.rank = round(global.rank);
         if global.replay{
             global.replay_save_state = false;
         }
@@ -332,7 +324,6 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
         instance_create(x, y, bomb_object); // Bomb
         global.bomb=true;
         global.bombs-=1;
-        global.rank-=(global.rank-10)*0.2;
     }
     
     if global.bomb == true{
@@ -380,7 +371,6 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
         respawn = 180;
         start_counter = 60;
         global.life -= 1;
-        global.rank -= 0;   // TO DO
         global.pow -= 1;
         if global.pow &lt; 1
             {global.pow = 1;}
@@ -389,20 +379,6 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
         global.star = false;
         global.player_x = xstart;
         global.player_y = ystart;
-    }
-    
-    // Graze Flake scale
-    if global.shift==true{
-        if scale&lt;1{
-            scale+=0.05;
-        }
-        if scale==1{
-            r1+=2; r2-=2;
-        }
-    }else{
-        scale=0.5;
-        r1=0;
-        r2=10;
     }
 }
 </string>
@@ -431,8 +407,6 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
     if global.shift=true{
         draw_set_alpha(1);
         draw_self();
-        draw_sprite_ext(spr_graze,0,x,y,scale,scale,r1,image_blend,0.5);
-        draw_sprite_ext(spr_graze,0,x,y,scale,scale,r2,image_blend,0.5);
     }
 }
 </string>

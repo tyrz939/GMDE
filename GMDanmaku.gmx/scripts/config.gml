@@ -1,8 +1,8 @@
 global.debug = true; // Debug mode
-global.version = "0.9.5"; // Version
+global.version = "0.10.0"; // Version
 global.name = "GMDE Development Build"; // Name
 
-global.text_pulse_color = make_color_rgb(255, 150, 0);
+global.text_pulse_color = make_color_rgb(255, 255, 255);
 
 
 

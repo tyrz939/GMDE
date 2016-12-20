@@ -14,13 +14,13 @@ repeat(8)
             instance_destroy();
 //            shot_impact1(global.pshot_impact);
             }
-        global.score+=dmg;
+        global.score += dmg * 0.1;
         hp-=dmg;
         }
     }
 
 while laser_hit > 1{
-    global.score += global.laserdmg;
+    global.score += global.laserdmg * 0.1;
     hp -= global.laserdmg;
     laser_hit -= 1;
 }
@@ -38,7 +38,7 @@ if global.bomb==true
             {
             other.dmg=dmg;
             }
-        global.score+=dmg;
+        global.score+=dmg * 0.1;
         hp-=dmg;
         }
     }

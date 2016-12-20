@@ -155,16 +155,7 @@ if global.term{
           <argument>
             <kind>1</kind>
             <string>if global.term{
-    switch global.resolution{
-        case 0:
-            var w = 640; var h = 480; break;
-        case 1:
-            var w = 960; var h = 720; break;
-        case 2:
-            var w = 1280; var h = 960; break;
-        default:
-            var w = 640; var h = 480; break;
-    }
+    var w = global.res_x; var h = global.res_y;
     display_set_gui_size(w,h);
     // Background
     draw_set_color(c_black);

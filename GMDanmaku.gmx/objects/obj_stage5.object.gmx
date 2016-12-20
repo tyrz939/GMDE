@@ -33,7 +33,7 @@ global.level = obj_stage5;
 
 //Music
 if global.bgm{
-    audio_play_sound(bgm_stage2,10,true);
+    music_start(bgm_stage1);
 }
 
 next = false;
@@ -60,12 +60,8 @@ global.levelpos = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if next {
-    with obj_BG_stage2{
-        instance_destroy();
-        global.seconds = 0;
-        audio_stop_all();
-    }
+            <string>with obj_BG_stage2{
+    instance_destroy();
 }
 </string>
           </argument>

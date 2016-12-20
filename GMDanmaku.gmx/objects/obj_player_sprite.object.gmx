@@ -41,6 +41,11 @@ right=false;
 turn_event=0; //Important!
 
 sprite_index = global.straight;
+
+// Graze Flake Values
+scale=0.5;
+r1=0;
+r2=10;
 </string>
           </argument>
         </arguments>
@@ -106,28 +111,42 @@ if right==true xor left==true{
 //Pause Trigger
 if global.pause==0{
 
-//Animations speeds!
-if turn_event==0 {image_speed=0.2;}
-else if turn_event==2 {image_speed=0.2;}
-else if turn_event==1 {image_speed=0.4;}
-else if turn_event==3 {image_speed=-0.4;}
-
-y = round(global.player_y);
-x = round(global.player_x);
-
-if !instance_exists(global.player) {instance_destroy();}
-
-if respawn==true {respawn=false; timer=180; i=180; image_alpha=0.75;}
-
-if i=timer{
-    i-=6;
-    if image_alpha==0.75 {image_alpha=0.25;}
-    else if image_alpha==0.25 {image_alpha=0.75;}
-}
+    //Animations speeds!
+    if turn_event==0 {image_speed=0.2;}
+    else if turn_event==2 {image_speed=0.2;}
+    else if turn_event==1 {image_speed=0.4;}
+    else if turn_event==3 {image_speed=-0.4;}
     
-if timer&gt;0 {timer-=1;}
-else {image_alpha=1;}
+    y = round(global.player_y);
+    x = round(global.player_x);
+    
+    if !instance_exists(global.player) {instance_destroy();}
+    
+    if respawn==true {respawn=false; timer=180; i=180; image_alpha=0.75;}
+    
+    if i=timer{
+        i-=6;
+        if image_alpha==0.75 {image_alpha=0.25;}
+        else if image_alpha==0.25 {image_alpha=0.75;}
+    }
+        
+    if timer&gt;0 {timer-=1;}
+    else {image_alpha=1;}
 
+    // Graze Flake scale
+    if global.shift==true{
+        if scale&lt;1{
+            scale+=0.05;
+        }
+        if scale==1{
+            r1+=2; r2-=2;
+        }
+    }else{
+        scale=0.5;
+        r1=0;
+        r2=10;
+    }
+    
 }else {image_speed=0;}
 </string>
           </argument>
@@ -151,7 +170,12 @@ else {image_alpha=1;}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.life &gt;= 0{
+            <string>draw_set_alpha(1);
+if global.life &gt;= 0{
+    if global.shift=true{
+        draw_sprite_ext(spr_graze,0,x,y,scale,scale,r1,image_blend,0.5);
+        draw_sprite_ext(spr_graze,0,x,y,scale,scale,r2,image_blend,0.5);
+    }
     draw_sprite_ext(sprite_index,image_index,round(x),round(y),image_xscale,image_yscale,image_angle,image_blend,image_alpha);
 }
 </string>

@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>spd=20;
-dmg=15;
+dmg=10;
 
 event_inherited();
 </string>
@@ -52,8 +52,8 @@ event_inherited();
           <argument>
             <kind>1</kind>
             <string>if y &gt; 15{
-    var c = choose(c_orange, c_red, c_yellow);
-    part_particles_create_colour(global.Psys, x, y-15, global.part_mimpact,c, 1);
+    var c = choose(make_colour_rgb(255,215,0), c_red, c_silver);
+    part_particles_create_colour(global.Psys, x, y-15, global.part_mimpact, c, 1);
 }
 </string>
           </argument>

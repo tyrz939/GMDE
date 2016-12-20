@@ -19,7 +19,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -45,7 +45,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -71,7 +71,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -97,7 +97,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -123,7 +123,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -149,7 +149,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -175,7 +175,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -201,7 +201,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -227,7 +227,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -253,7 +253,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -279,7 +279,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -305,7 +305,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -331,7 +331,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -357,7 +357,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -383,7 +383,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -409,7 +409,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -435,7 +435,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -461,7 +461,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -487,7 +487,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -513,7 +513,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -539,7 +539,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -565,7 +565,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -591,7 +591,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -617,7 +617,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -643,7 +643,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -669,7 +669,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -695,7 +695,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -721,7 +721,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -747,7 +747,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -773,7 +773,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -799,7 +799,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -825,7 +825,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -851,7 +851,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -877,7 +877,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -903,7 +903,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -929,7 +929,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -955,7 +955,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -981,7 +981,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1007,7 +1007,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1033,7 +1033,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1059,7 +1059,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1085,7 +1085,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1111,7 +1111,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1137,7 +1137,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1163,7 +1163,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1189,7 +1189,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1215,7 +1215,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1241,7 +1241,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1267,7 +1267,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1293,7 +1293,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1319,7 +1319,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1345,7 +1345,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1371,7 +1371,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1397,7 +1397,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1423,7 +1423,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1449,7 +1449,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1475,7 +1475,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1501,7 +1501,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1527,7 +1527,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1553,7 +1553,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>
@@ -1579,7 +1579,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(irandom(400), 0, obj_stg2_rock);
+            <string>instance_create(irandom_sync(400), 0, obj_stg2_rock);
 </string>
           </argument>
         </arguments>

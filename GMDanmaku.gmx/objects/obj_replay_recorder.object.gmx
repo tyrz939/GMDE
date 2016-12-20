@@ -136,10 +136,9 @@ stage = 0;
         state[7, states_saved] = global.level;
         state[8, states_saved] = global.levelpos;
         state[9, states_saved] = global.score;
-        state[10, states_saved] = global.rank;
-        state[11, states_saved] = global.player.wep_gcd;
-        state[12, states_saved] = global.graze;
-        state[13, states_saved] = global.point;
+        state[10, states_saved] = global.player.wep_gcd;
+        state[11, states_saved] = global.graze;
+        state[12, states_saved] = global.point;
         
         states_saved++;
     }

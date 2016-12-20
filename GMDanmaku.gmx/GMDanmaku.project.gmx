@@ -35,26 +35,23 @@
     </sounds>
   </sounds>
   <sprites name="sprites">
+    <sprite>sprites\spr_res_sel</sprite>
     <sprite>sprites\spr_pausebg</sprite>
     <sprite>sprites\spr_black</sprite>
     <sprite>sprites\spr_ItemGet</sprite>
     <sprites name="Backgrounds">
-      <sprite>sprites\spr_bg_stg1</sprite>
-      <sprite>sprites\spr_bg_stg2</sprite>
       <sprite>sprites\spr_stg2_bg</sprite>
     </sprites>
     <sprites name="Interface">
       <sprite>sprites\spr_interface1</sprite>
+      <sprite>sprites\spr_gui_star</sprite>
+      <sprite>sprites\spr_gui_heart</sprite>
       <sprites name="Main Menu">
         <sprite>sprites\spr_menu_bg</sprite>
         <sprite>sprites\spr_menu_top</sprite>
         <sprite>sprites\spr_text_bg</sprite>
         <sprite>sprites\spr_star_particle</sprite>
         <sprite>sprites\spr_diff</sprite>
-      </sprites>
-      <sprites name="Difficulty/Char select">
-        <sprite>sprites\spr_char_0</sprite>
-        <sprite>sprites\spr_AB</sprite>
       </sprites>
       <sprite>sprites\spr_boss_open</sprite>
       <sprite>sprites\spr_bossbtm</sprite>
@@ -88,14 +85,7 @@
           <sprite>sprites\spr_stg2_rock0</sprite>
         </sprites>
         <sprites name="Spinny things">
-          <sprite>sprites\spr_spiny3</sprite>
-          <sprite>sprites\spr_spiny2</sprite>
           <sprite>sprites\spr_spiny1</sprite>
-          <sprite>sprites\spr_spiny4</sprite>
-          <sprite>sprites\spr_spiny5</sprite>
-          <sprite>sprites\spr_spiny6</sprite>
-          <sprite>sprites\spr_spiny7</sprite>
-          <sprite>sprites\spr_spiny8</sprite>
         </sprites>
       </sprites>
       <sprites name="Deaths">
@@ -181,7 +171,6 @@
     <sprites name="Point Items">
       <sprite>sprites\spr_powerup</sprite>
       <sprite>sprites\spr_Pabove</sprite>
-      <sprite>sprites\spr_gui_star</sprite>
       <sprite>sprites\spr_powerup_bg</sprite>
     </sprites>
     <sprites name="Bombs">
@@ -210,6 +199,7 @@
       </sprites>
     </sprites>
     <sprite>sprites\spr_placeholder</sprite>
+    <sprite>sprites\spr_res_sel_sel</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="Stage 1">
@@ -238,6 +228,7 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\init.gml</script>
     <script>scripts\config.gml</script>
     <script>scripts\scr_start.gml</script>
     <scripts name="Core">
@@ -253,6 +244,10 @@
         </scripts>
       </scripts>
       <script>scripts\scr_music_stop.gml</script>
+      <script>scripts\music_start.gml</script>
+      <script>scripts\random_sync.gml</script>
+      <script>scripts\irandom_sync.gml</script>
+      <script>scripts\goto_stage.gml</script>
     </scripts>
     <scripts name="Menus">
       <script>scripts\scr_menu_step.gml</script>
@@ -270,18 +265,16 @@
         <script>scripts\scr_stage2.gml</script>
         <script>scripts\scr_stage2_1.gml</script>
         <script>scripts\scr_stage2_3.gml</script>
-      </scripts>
-    </scripts>
-    <scripts name="Shot Patterns">
-      <script>scripts\scr_shot_collision.gml</script>
-      <script>scripts\scr_shot_collision1.gml</script>
-      <script>scripts\scr_laser_collision.gml</script>
-      <scripts name="Stage 2">
         <scripts name="Midboss">
           <script>scripts\scr_stg2_midboss1.gml</script>
           <script>scripts\scr_stg2_midboss2.gml</script>
         </scripts>
       </scripts>
+    </scripts>
+    <scripts name="Shot Related">
+      <script>scripts\scr_shot_collision.gml</script>
+      <script>scripts\scr_shot_collision1.gml</script>
+      <script>scripts\scr_laser_collision.gml</script>
       <script>scripts\shot_create.gml</script>
     </scripts>
     <scripts name="Player">
@@ -320,7 +313,7 @@
       <script>scripts\replay_load_binary.gml</script>
     </scripts>
     <script>scripts\scr_save.gml</script>
-    <script>scripts\scr_reset.gml</script>
+    <script>scripts\scr_load.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_boss.shader</shader>
@@ -348,7 +341,7 @@
     <font>fonts\font_terminal</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_splash</object>
+    <object>objects\obj_start</object>
     <object>objects\input</object>
     <objects name="Drawing">
       <object>objects\obj_draw_start</object>
@@ -358,26 +351,26 @@
     </objects>
     <objects name="Core">
       <object>objects\obj_game</object>
-      <object>objects\obj_score_sys</object>
       <object>objects\obj_replay_recorder</object>
       <object>objects\terminal</object>
     </objects>
     <objects name="Interface">
       <object>objects\obj_interface</object>
+      <object>objects\obj_track_name</object>
       <object>objects\obj_demo_play</object>
       <object>objects\obj_score_screen</object>
       <objects name="Main Menu">
         <object>objects\obj_menu</object>
         <object>objects\obj_menu_bg</object>
         <object>objects\obj_transition</object>
-      </objects>
-      <objects name="Difficulty/Char/Options">
-        <object>objects\obj_diff_sel</object>
-        <object>objects\obj_replay_menu</object>
-        <object>objects\obj_replay_sel_stage</object>
-        <object>objects\obj_options_menu</object>
-        <object>objects\obj_rebind_menu</object>
-        <object>objects\obj_char_select_OLD</object>
+        <objects name="Difficulty/Char/Options">
+          <object>objects\obj_diff_sel</object>
+          <object>objects\obj_replay_menu</object>
+          <object>objects\obj_replay_sel_stage</object>
+          <object>objects\obj_options_menu</object>
+          <object>objects\obj_rebind_menu</object>
+          <object>objects\obj_char_select_OLD</object>
+        </objects>
       </objects>
       <objects name="Ingame Menus">
         <object>objects\obj_pause_parent</object>
@@ -394,9 +387,10 @@
     </objects>
     <objects name="Levels">
       <objects name="Test Level">
-        <object>objects\obj_testlvl</object>
+        <object>objects\obj_stage8</object>
         <object>objects\obj_3dBG_test</object>
       </objects>
+      <object>objects\obj_background_parent</object>
       <object>objects\obj_level_intro</object>
       <object>objects\obj_ItemGet</object>
       <object>objects\obj_timeline</object>
@@ -422,7 +416,7 @@
         <object>objects\obj_3dBG_stage6</object>
       </objects>
       <objects name="Extra">
-        <object>objects\obj_extra</object>
+        <object>objects\obj_stage7</object>
         <object>objects\obj_3dBG_extra</object>
       </objects>
     </objects>
@@ -435,11 +429,9 @@
     <objects name="Shots">
       <objects name="Player">
         <object>objects\obj_Pshot_parent</object>
-        <objects name="New Shots">
-          <object>objects\obj_Plaser_0</object>
-          <object>objects\obj_Pshot_main</object>
-          <object>objects\obj_Pshot_1</object>
-        </objects>
+        <object>objects\obj_Plaser_0</object>
+        <object>objects\obj_Pshot_main</object>
+        <object>objects\obj_Pshot_1</object>
       </objects>
       <objects name="Short Lasers">
         <object>objects\obj_laser_parent</object>
@@ -479,6 +471,9 @@
         </objects>
         <object>objects\obj_enemy_parent</object>
         <objects name="Stage 1">
+          <object>objects\obj_stg1_control1</object>
+          <object>objects\obj_stg1_enemy1</object>
+          <object>objects\obj_stg1_shot1</object>
           <object>objects\obj_stg1_greenthing</object>
           <object>objects\obj_stg1_shot0</object>
         </objects>
@@ -528,7 +523,7 @@
   </objects>
   <timelines name="timelines">
     <timelines name="Stage 1">
-      <timeline>timelines\tl_stg1_greenthings</timeline>
+      <timeline>timelines\tl_stg1_tracker0</timeline>
     </timelines>
     <timelines name="Stage 2">
       <timeline>timelines\tl_stg2_rocks</timeline>
@@ -540,10 +535,8 @@
     </timelines>
   </timelines>
   <rooms name="rooms">
-    <rooms name="Menus">
-      <room>rooms\room_splash</room>
-      <room>rooms\room_menu</room>
-    </rooms>
+    <room>rooms\room_splash</room>
+    <room>rooms\room_menu</room>
     <room>rooms\room_ingame</room>
   </rooms>
   <constants number="24">

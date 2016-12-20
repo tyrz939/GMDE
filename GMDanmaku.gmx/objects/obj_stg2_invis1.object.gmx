@@ -51,23 +51,21 @@ amount = 8;
           <argument>
             <kind>1</kind>
             <string>if global.pause == 0{
-
-radius-=2;
-dir+=5;
-
-if radius == 0{
-    audio_stop_sound(sfx_enemy_shoot);
-    audio_play_sound(sfx_enemy_shoot,1,false);
-    instance_destroy();
-    var re = 6 + (global.difficulty * 4);
-    var spd = 4;
-    var dir0 = point_direction(x, y, global.player_x, global.player_y);
-    repeat re{
-        shot_create( obj_smallball, BLUE,x,y,spd,dir0)
-        spd -=  3/re;
+    radius-=2;
+    dir+=5;
+    
+    if radius == 0{
+        audio_stop_sound(sfx_enemy_shoot);
+        audio_play_sound(sfx_enemy_shoot,1,false);
+        instance_destroy();
+        var re = 6 + (global.difficulty * 4);
+        var spd = 4;
+        var dir0 = point_direction(x, y, global.player_x, global.player_y);
+        repeat re{
+            shot_create( obj_smallball, BLUE,x,y,spd,dir0)
+            spd -=  3/re;
+        }
     }
-}
-
 }
 </string>
           </argument>

@@ -17,8 +17,7 @@ if d<30 // Checks for a graze
         {
         global.grazeSlow = 20;
         global.graze+=1;
-        global.rank+=0.015;
-        global.score+=500;
+        global.score+=2;
         grazed=true; // So it can't graze twice
         }
     grazing = true;

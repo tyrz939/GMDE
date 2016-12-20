@@ -64,28 +64,22 @@ image_yscale = 0.75;
 event_inherited();
     
 //Score etc
-if collision_circle(x, y, pickup_dist, global.player, false, true)
-    {
+if collision_circle(x, y, pickup_dist, global.player, false, true) {
     audio_stop_sound(sfx_block);
     audio_play_sound(sfx_block,1,false);
-    if bomb==false
-        {
-        add = round(500+(10*(global.graze/3)));
+    if bomb==false {
+        add = round(2+(global.graze*0.01));
         global.score += add;
-        }
-    else
-        {
-        add = 100;
+    } else {
+        add = 1;
         global.score += add;
-        }
-    global.rank+=0.03;
+    }
     instance_destroy();
-    with instance_create(x,y,obj_Pup_text)
-        {
+    with instance_create(x,y,obj_Pup_text) {
         text = other.add;
         col = c_white;
-        }
     }
+}
 
 }
 </string>

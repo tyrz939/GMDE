@@ -44,11 +44,6 @@ for (var i = 0; i &lt; replayListLength; i++) {
         character = file_bin_read_byte(file); // Read Character
         switch character{
             case 0: character = "Kaede"; break;
-            case 1: character = "ReimuA"; break;
-            case 2: character = "ReimuB"; break;
-            case 3: character = "MarisaA"; break;
-            case 4: character = "MarisaB"; break;
-            case 5: character = "Yuuka"; break;
         }
         // Read Saved Date
         o = file_bin_read_byte(file);
