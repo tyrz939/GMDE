@@ -7,24 +7,24 @@ if hp <=0
     global.score+=10
     if global.bomb == false
     {
-        var i = irandom(1)
+        var i = irandom_sync(1)
         if i == 1
         {
             if global.pow<4
             {
-                instance_create(x+(irandom(24)-12), y+(irandom(24)-12), obj_power_block);
-                instance_create(x+(irandom(24)-12), y+(irandom(24)-12), obj_power_block);
+                instance_create(x+(irandom_sync(24)-12), y+(irandom_sync(24)-12), obj_power_block);
+                instance_create(x+(irandom_sync(24)-12), y+(irandom_sync(24)-12), obj_power_block);
             }
             else
             {
-                instance_create(x+(irandom(24)-12), y+(irandom(24)-12), obj_score_block);
-                instance_create(x+(irandom(24)-12), y+(irandom(24)-12), obj_score_block);
+                instance_create(x+(irandom_sync(24)-12), y+(irandom_sync(24)-12), obj_score_block);
+                instance_create(x+(irandom_sync(24)-12), y+(irandom_sync(24)-12), obj_score_block);
             }
         }
         if i == 0
             {
-                instance_create(x+(irandom(24)-12), y+(irandom(24)-12), obj_score_block);
-                instance_create(x+(irandom(24)-12), y+(irandom(24)-12), obj_score_block);
+                instance_create(x+(irandom_sync(24)-12), y+(irandom_sync(24)-12), obj_score_block);
+                instance_create(x+(irandom_sync(24)-12), y+(irandom_sync(24)-12), obj_score_block);
             }
     }
 }

@@ -52,6 +52,7 @@ switch global.difficulty{
     case 1: score_col = make_colour_rgb(150,150,255); break;
     case 2: score_col = make_colour_rgb(255,150,150); break;
     case 3: score_col = make_colour_rgb(220,150,255); break;
+    case 4: score_col = make_colour_rgb(200,200,200); break;
 }
 
 // Misc
@@ -243,7 +244,7 @@ if global.debug==true
     var dbY = 600;
     draw_set_color(c_black);
     draw_set_alpha(0.75);
-    draw_rectangle(dbX -10,dbY,dbX + 200,dbY + 220,false)
+    draw_rectangle(dbX -10,dbY,dbX + 200,dbY + 260,false)
     dbY += 20;
     draw_set_color(c_white);
     draw_set_alpha(1);
@@ -277,6 +278,10 @@ if global.debug==true
     draw_text(dbX,dbY,"Player X: " + string(global.player_x));
     dbY += 20;
     draw_text(dbX,dbY,"Player Y: " + string(global.player_y));
+    dbY += 20;
+    draw_text(dbX,dbY,"Stage Position: " + string(global.levelpos));
+    dbY += 20;
+    draw_text(dbX,dbY,"Score: " + string(global.score));
 }
 
 draw_set_font(font1);
@@ -329,13 +334,15 @@ draw_sprite(spr_interface1,0,0,0);
           <argument>
             <kind>1</kind>
             <string>/// Boss HP Circle
-with obj_boss_parent{
-    if timer&gt;-60{
-        var Chp = ceil(359/maxhp*hp)
-        if hp&gt;0{
+with obj_boss_parent {
+    if timer&gt;-60 {
+        if hp&gt;0 {
+            var Chp = ceil(359/maxhp*hp)
+            var xD = round(x);
+            var yD = round(y);
             d3d_transform_set_identity();
             d3d_transform_set_rotation_z(90);
-            d3d_transform_add_translation(x,y,0);
+            d3d_transform_add_translation(xD,yD,0);
              
             draw_primitive_begin(pr_trianglestrip);
             for (i=0; i &lt;= Chp; i++){
@@ -348,10 +355,10 @@ with obj_boss_parent{
             draw_set_circle_precision(64);
             draw_set_alpha(0.75);
             draw_set_color(make_colour_rgb(255,100,100));
-            draw_circle(x,y,radius,true);
-            draw_circle(x,y,radius+line,true);
+            draw_circle(xD,yD,radius,true);
+            draw_circle(xD,yD,radius+line,true);
             draw_set_color(make_colour_rgb(150,150,255));
-            draw_line(x,y-(radius),x,y-(radius+line+1));
+            draw_line(xD,yD-(radius),xD,yD-(radius+line+1));
             draw_set_alpha(1);
         }
     }

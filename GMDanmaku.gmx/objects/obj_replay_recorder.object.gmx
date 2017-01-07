@@ -77,8 +77,7 @@ stage = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.replay==false
-{
+            <string>if global.replay==false{
     if input.up == true
         {pos_move=true; UP=1;}    
     else if input.up == false
@@ -123,7 +122,6 @@ stage = 0;
             save_points[s] = true;
         }
         
-        global.replay_save_state = false;
         pos_move = true;
         
         state[0, states_saved] = global.player_x;
@@ -144,8 +142,7 @@ stage = 0;
     }
     
     //Record to array if something is pressed
-    if pos_move == true &amp;&amp; global.pause == 0
-    {
+    if pos_move == true &amp;&amp; global.pause == 0{
         replay[timer,pos]=global.frame;
         replay[up,pos]=UP;
         replay[down,pos]=DOWN;
@@ -159,8 +156,14 @@ stage = 0;
     }
 }
 
-//Script to save the replay.
-replay_save_binary();
+/* Writes to a replay file when the player selects to do so.*/
+if global.pause==1 &amp;&amp; replay_save==true{
+    replay_save_binary();
+    scr_save();
+    room_goto(room_menu);
+    global.pause=0;
+    global.reset=0;
+}
 </string>
           </argument>
         </arguments>

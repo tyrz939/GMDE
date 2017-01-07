@@ -25,25 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surf_3d = noone;
-
-direction = 270; // Camera View X
-zdirection = 60; // Camera View Y
+            <string>direction = 270; // Camera View X
+zdirection = 15; // Camera View Y
+surf_3d = noone;
 x = 0;
 y = 512;
-z = 2560; // Height of Camera
+z = 1024; // Height of Camera
 ratio = global.xview / global.yview;
 fov = 45;
 
-d = 0;
+// 3D Demo
 
-layer0 = background_get_texture(bg_snow);
-layer1 = background_get_texture(bg_snow_to_ice);
-layer2 = background_get_texture(bg_Ice);
+layer1 = background_get_texture(bg_snow);
+layer2 = background_get_texture(bg_backdrop1);
 
-timer = 0;
-
+/*
 // Particles
+timer = 0;
 particle1 = part_type_create();
 part_type_shape(particle1,pt_shape_disk);
 part_type_size(particle1,0.05,0.1,0,0);
@@ -51,12 +49,45 @@ part_type_scale(particle1,1,1);
 part_type_alpha1(particle1,0.5);
 part_type_speed(particle1,2,5,0,0);
 part_type_direction(particle1,260,280,0,0);
-part_type_orientation(particle1,0,0,-1+random(2),0,1);
-part_type_blend(particle1,true
-);
+part_type_orientation(particle1,0,0,0,0,1);
+part_type_blend(particle1,true);
 part_type_life(particle1,400,400);
 
-snow_particle_timer = 3;
+snow_particle_timer1 = 3;*/
+/*
+// Custom Particles
+num = 32;
+spd = 3;
+for(var i = num; i &gt; 0; i--) {
+    bg[0, i] = irandom(global.xview); // X
+    bg[1, i] = irandom(global.yview + 384*2) - 384 ; // Y
+    bg[2, i] = spd + random(2); // Speed
+    bg[3, i] = 4 + random(2); // Scale
+    bg[4, i] = random(6) -3; // Direction
+    bg[5, i] = irandom(359); // Rotation
+}*/
+
+// 3d Particles !!!!
+amount = 500;
+amount_left = amount;
+xDir = 0;
+zDir = 1;
+xPos = 2;
+yPos = 3;
+zPos = 4;
+Spd = 5;
+Scale = 6;
+for(var i = amount; i &gt; 0; i--) {
+    // 0 = X Dir, 1 = Z Dir, 2 = X, 3 = Y, 4 = Z, 5 = Spd, 6 = Scale, 7 = Alive?
+    part_array[xDir, i] = 0;
+    part_array[zDir, i] = 255 + irandom(30);
+    part_array[yPos, i] = irandom(4096) + 1536;
+    var xrnd = part_array[yPos, i];
+    part_array[xPos, i] = irandom(xrnd) - (xrnd *0.5) ;
+    part_array[zPos, i] = irandom(2048);
+    part_array[Spd, i] = 16 + irandom(8);
+    part_array[Scale, i] = 4 + irandom(12);
+}
 </string>
           </argument>
         </arguments>
@@ -91,22 +122,48 @@ if mouse_wheel_down() {z-=5;}
 */
 
 if global.pause==0{
-    y += 16;
-    if y &gt;= 4096 {y -= 4096;}
     
-    d += 0.05;
-    direction = 270 + lengthdir_y(15,d);
+    
+    y += 10;
+    if y &gt;= 1024 {y -= 1024;}
+    
+    /*
+    if zdirection &gt; 36 {zdirection -= 0.2;}
+    if z &gt; 500 {z -= 2;}
+    */
+    
     
     // 3D Demo
-    //direction = 270 - ((global.player_x/20)-11.25)
-    //zdirection = 40 + ((global.player_y/30)-8)
+//    var dir_change = global.player_x/20;
+//    dir_target = (270+(global.xview/40)) - dir_change;
     
-    if timer == snow_particle_timer {
-        snow_particle_timer += 1;
-        part_particles_create_colour(global.Psys,random(480),(random(50)-50),particle1,make_colour_rgb(255,255,255), 1);
+    dir_target = 270 - (global.player_x - (global.xview/2)) * 0.1;
+    zdir_target = 10 + (global.player_y/60);
+    
+    direction += (dir_target - direction) * 0.005;
+    zdirection += (zdir_target - zdirection) * 0.005;;
+    /*
+    // Snow Particles
+    if timer == snow_particle_timer1 {
+        snow_particle_timer1 += 1;
+//        part_particles_create_colour(global.Psys,random(480),(random(50)-50),particle1,make_colour_rgb(255,255,255), 1);
     }
+    timer++;*/
     
-    timer++;
+    // 3D Particles
+    for(var i = amount; i &gt; 0; i--) {
+        part_array[yPos, i] -= 10;
+        part_array[xPos, i] += (part_array[Spd, i] * cos(part_array[xDir, i]*pi/180)) * cos(part_array[zDir, i]*pi/180);
+        part_array[yPos, i] += (part_array[Spd, i] * -sin(part_array[xDir, i]*pi/180)) * cos(part_array[zDir, i]*pi/180);
+        part_array[zPos, i] += part_array[Spd, i] * sin(part_array[zDir, i]*pi/180);
+        if part_array[zPos, i] &lt; 0 {
+            part_array[zDir, i] = 255 + irandom(30);
+            part_array[zPos, i] += 2048;
+            part_array[yPos, i] = irandom(4096) + 1536;
+            var xrnd = part_array[yPos, i];
+            part_array[xPos, i] = irandom(xrnd) - (xrnd *0.5) ;
+        }
+    }
 }
 </string>
           </argument>
@@ -138,17 +195,15 @@ surface_set_target(surf_3d);
 draw_clear_alpha(c_black, 1);
 
 d3d_start();
-
-// Camera
 draw_set_color(c_white);
+// Camera
 
-/*
-direction -= (display_mouse_get_x()-640/2)/8;
+// Mouse movement code
+/*direction -= (display_mouse_get_x()-640/2)/8;
 zdirection += (display_mouse_get_y()-480/2)/8;
 if zdirection &gt; 90 {zdirection = 90;}
 if zdirection &lt; -90 {zdirection = -90;}
-display_mouse_set(640/2,480/2);
-*/
+display_mouse_set(640/2,480/2);*/
 
 xto = x + lengthdir_x(180,direction) * lengthdir_x(1,zdirection);
 yto = y + lengthdir_y(180,direction) * lengthdir_x(1,zdirection);
@@ -158,15 +213,58 @@ d3d_set_projection_ext(x,y,z,xto,yto,zto,0,0,1,fov,ratio,1,32000);
 
 // 3D Demo
 
-draw_set_alpha(1);
-d3d_draw_floor(-3072,1024*9,0,3072,1024*32,0,layer2,4,21); // Ice
-d3d_draw_floor(-3072,1024*8,0,3072,1024*9,0,layer1,4,1); // Snow &gt; Ice transition
-d3d_draw_floor(-3072,0,0,3072,1024*8,0,layer0,4,8); // Snow
+d3d_draw_floor(-512*32,0 + 1024*32,10,512*32,0,10,layer1,64,32);
+d3d_draw_wall(-512*8*4, y + 1024*16, 512*8*2, 512*8*4, y + 1024*16, 0, layer2, 4, 1);
 
+draw_set_blend_mode(bm_add);
+// 3D Particles
+var spr = sprite_get_texture(spr_stg1_bg_snow, 1);
+for(var i = amount; i &gt; 0; i--){
+    var w = (sprite_get_width(sprite_index) / 2) * part_array[Scale, i];
+    var h = (sprite_get_height(sprite_index) / 2) * part_array[Scale, i];
+    d3d_primitive_begin_texture(pr_trianglefan, spr);
+    d3d_vertex_texture(part_array[xPos, i]-w, part_array[yPos, i] +y, part_array[zPos, i]-h, 0, 0);
+    d3d_vertex_texture(part_array[xPos, i]+w, part_array[yPos, i] +y, part_array[zPos, i]-h, 1, 0);
+    d3d_vertex_texture(part_array[xPos, i]+w, part_array[yPos, i] +y, part_array[zPos, i]+h, 1, 1);
+    d3d_vertex_texture(part_array[xPos, i]-w, part_array[yPos, i] +y, part_array[zPos, i]+h, 0, 1);
+    d3d_primitive_end();
+}
+draw_set_blend_mode(bm_normal);
 
 // End 3D
 
 d3d_end();
+
+// Surface End
+/*
+surface_reset_target();
+surface_set_target(surf_3d);
+
+// Custom Particle Draw
+
+if global.pause == 0{
+//    draw_set_color(c_blue);
+//    draw_set_alpha(0.2);
+//    draw_rectangle(0, 0, global.xview, global.yview, false);
+//    draw_set_alpha(1);
+    
+    for(var i = 0; i &lt; num; i++){
+        if bg[1, i] &lt; 834{
+            bg[0, i] += (bg[2, i] * cos ((270 + bg[4, i]) * pi / 180));
+            bg[1, i] += (bg[2, i] * -sin ((270 + bg[4, i]) * pi / 180));
+        }else{
+            bg[0, i] = irandom(global.xview);
+            bg[1, i] = -irandom(global.yview + 384) - 384;
+            bg[2, i] = spd + random(2);
+            bg[3, i] = 4 + random(2);
+        }
+    }
+}
+
+for(var i = 0; i &lt; num; i++){
+    draw_sprite_ext(spr_stage1_cloud, 0, bg[0, i], bg[1, i], bg[3, i], bg[3, i], bg[5, i], make_colour_rgb(255,255,255), 0.1);
+}*/
+
 surface_reset_target();
 surface_set_target(global.surf_game);
 draw_surface(surf_3d, 0, 0);

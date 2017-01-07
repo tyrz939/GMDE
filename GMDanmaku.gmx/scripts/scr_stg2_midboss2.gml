@@ -30,7 +30,7 @@ if timer == wait0
     dir0 = irandom_sync(359);
     repeat(re0)
     {
-        shot_create( obj_ball, BLUE,x+lengthdir_x(dist,dir0),y+lengthdir_y(dist,dir0),spd0,dir0);
+        shot_create( obj_ball, BLUE,x+lengthdir_x(dist,dir0),y+lengthdir_y(dist,dir0),spd0,dir0, 16);
         spd0 -= 2.5/re0;
     }
 }

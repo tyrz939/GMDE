@@ -36,8 +36,6 @@ image_angle=direction;
 len_x=lengthdir_x(length,direction);
 len_y=lengthdir_y(length,direction);
 
-shot_spawn1(c_white);
-
 color = c_white;
 </string>
           </argument>

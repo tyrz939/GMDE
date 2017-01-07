@@ -100,14 +100,16 @@ if push == 1
             instance_create(x,y,obj_diff_sel);
             break;
         case 1: // Start Extra
-            global.demo_play = false;
-            global.replay = false;
-            global.difficulty = 4;
-            global.level = obj_extra;
-            global.start_game = true;
-            scr_start(); // Loads variables
-            instance_deactivate_object(self);
-            room_goto(room_ingame);
+            if global.extra_unlock {
+                global.demo_play = false;
+                global.replay = false;
+                global.difficulty = 4;
+                global.level = obj_stage7;
+                global.start_game = true;
+                scr_start(); // Loads variables
+                instance_deactivate_object(self);
+                room_goto(room_ingame);
+            }
             break;
         case 2: // Replay Menu
             global.demo_play = false;

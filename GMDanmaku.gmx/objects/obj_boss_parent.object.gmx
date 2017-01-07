@@ -42,6 +42,7 @@ spellcard_on = true;
 
 sweep=0;
 global.clear=true;
+global.level_run = false;
 
 //Name Stuff
 name = string("Bossy Mc Boss Boss");
@@ -64,6 +65,8 @@ surf_distortion = noone
 //Collision
 hitbox = 40;
 laser_hit = 0;
+
+frame = global.frame;
 </string>
           </argument>
         </arguments>
@@ -86,10 +89,7 @@ laser_hit = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(global.level){
-    global.levelpos++;
-    global.seconds=0;
-}
+            <string>global.level_run = true;
 </string>
           </argument>
         </arguments>
@@ -146,6 +146,7 @@ if spell_timer==0 || hp&lt;0  // Next Spellcard
         }
     else
         {global.star=false;}
+    frame = global.frame;
     }
 
 // Spell Bonus
@@ -234,8 +235,7 @@ draw_text(name_x,55,string(name));
 
 
 //Boss Debug
-if global.debug==true
-    {
+if global.debug==true {
     draw_set_alpha(1);
     draw_set_font(font_debug);
     draw_text(700,120,"Boss Debug");
@@ -244,7 +244,8 @@ if global.debug==true
     draw_text(700,180,"Health: " + string(hp));
     draw_text(700,200,"X: " + string(x));
     draw_text(700,220,"Y: " + string(y));
-    }
+    draw_text(700,240,"Spawn Frame: " + string(frame));
+}
 
 //Top line health bar
 //draw_sprite_ext(spr_health_bar,0,32,32,(hp/maxhp)*432,1,0,image_blend,1)

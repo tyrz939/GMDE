@@ -7,7 +7,7 @@ if hp <=0
     global.score+=10
     if global.bomb == false
     {
-        var i = irandom(1)
+        var i = irandom_sync(1)
         if i == 1
         {
             if global.pow<4

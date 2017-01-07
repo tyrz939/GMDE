@@ -35,8 +35,6 @@ grazing = false;
 xd = x;
 yd = y;
 
-shot_spawn1(c_white);
-
 image_speed = 0;
 
 //color = c_white;

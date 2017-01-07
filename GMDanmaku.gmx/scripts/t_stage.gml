@@ -2,7 +2,7 @@
 var go = false;
 if exec[1] == "test"{
     go = true;
-    global.level = obj_testlvl; // Stage
+    global.level = obj_stage8; // Stage
 }else if exec[1] == "1"{
     go = true;
     global.level = obj_stage1; // Stage
@@ -23,7 +23,7 @@ if exec[1] == "test"{
     global.level = obj_stage6; // Stage
 }else if exec[1] == "extra"{
     go = true;
-    global.level = obj_extra; // Stage
+    global.level = obj_stage7; // Stage
 }
 else if exec[1] == ""{
     println("stage: Please select a stage");

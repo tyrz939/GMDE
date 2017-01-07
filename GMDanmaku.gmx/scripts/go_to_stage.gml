@@ -1,4 +1,4 @@
-///goto_stage(x);
+///go_to_stage(x);
 
 with global.level {
     instance_destroy();

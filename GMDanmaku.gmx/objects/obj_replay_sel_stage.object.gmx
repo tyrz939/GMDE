@@ -133,7 +133,7 @@ if input.bomb_press{
     instance_destroy();
     instance_activate_object(obj_replay_menu);
     audio_stop_sound(sfx_menu_sel);
-    audio_play_sound(sfx_menu_sel,1,false);
+    audio_play_sound(sfx_menu_back,1,false);
     exit;
 }
 

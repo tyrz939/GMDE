@@ -30,12 +30,12 @@ if timer == wait0
     dir0 = point_direction(x,y,global.player_x,global.player_y) - 90 + irandom_sync(180);
     repeat(re0)
     {
-        shot_create( obj_ball, RED,x+lengthdir_x(dist,dir0),y+lengthdir_y(dist,dir0),spd0,dir0);
+        shot_create( obj_ball, RED,x+lengthdir_x(dist,dir0),y+lengthdir_y(dist,dir0),spd0,dir0, 16);
         spd0 -= 2.5/re0;
     }
     repeat (global.difficulty+1)*2{
         dir1 = irandom_sync(359);
-        shot_create( obj_ani8, GRAY8,x+lengthdir_x(dist,dir1),y+lengthdir_y(dist,dir1),2,dir1);
+        shot_create( obj_ani8, GRAY8,x+lengthdir_x(dist,dir1),y+lengthdir_y(dist,dir1),2,dir1, 4);
     }
 }
 if timer >= 0{

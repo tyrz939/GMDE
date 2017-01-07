@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>1</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_stage_parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,26 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>timer = 0;
-instance_create(0,0,obj_3dBG_extra);
+            <string>background = noone;
 
-global.stage = 7;
-global.level = obj_extra;
+global.stage = 3;
+global.level = obj_stage7;
+stage_heading = "Stage Extra";
+stage_subheading = "Error: Stage No Work!!";
 
-
-/*
-Position in the level.
-0 = Test
-1 = Start
-2 = After Mid Boss
-3 = Before ghosty things
-4 = Boss
-*/
-
-global.continues = 0;
-
-next = false;
-global.levelpos = 1;
+//Music
+if global.bgm{
+//    music_start(bgm_stage1);
+}
+event_inherited();
 </string>
           </argument>
         </arguments>
@@ -94,24 +86,11 @@ global.levelpos = 1;
             <kind>1</kind>
             <string>//Level
 if global.pause==0{
-
-
-if timer == 0 &amp;&amp; global.demo_play == false
-    {
-    with instance_create(x,y,obj_level_intro)
-        {
-        music = noone;
-        text1 = "Extra Stage";//Stage number Text
-        text2 = "Open Sesame";//Stage name Text
-        }
+    event_inherited();
+    // Level Script
+    if global.level_run {
+//        scr_stage1();
     }
-
-if timer == 120 &amp;&amp; global.demo_play == false
-    {instance_create(0,0,obj_ItemGet);}
-
-timer+=1;
-//scr_extra(); //Level
-
 }
 </string>
           </argument>

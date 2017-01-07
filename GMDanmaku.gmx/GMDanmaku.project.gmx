@@ -13,6 +13,7 @@
     <sounds name="Menu">
       <sound>sound\sfx_menu_move</sound>
       <sound>sound\sfx_menu_sel</sound>
+      <sound>sound\sfx_menu_back</sound>
       <sound>sound\sfx_menu_togame</sound>
     </sounds>
     <sounds name="SFX">
@@ -41,6 +42,10 @@
     <sprite>sprites\spr_ItemGet</sprite>
     <sprites name="Backgrounds">
       <sprite>sprites\spr_stg2_bg</sprite>
+      <sprites name="Stage1">
+        <sprite>sprites\spr_stage1_cloud</sprite>
+      </sprites>
+      <sprite>sprites\spr_stg1_bg_snow</sprite>
     </sprites>
     <sprites name="Interface">
       <sprite>sprites\spr_interface1</sprite>
@@ -204,8 +209,7 @@
   <backgrounds name="background">
     <backgrounds name="Stage 1">
       <background>background\bg_snow</background>
-      <background>background\bg_Ice</background>
-      <background>background\bg_snow_to_ice</background>
+      <background>background\bg_backdrop1</background>
     </backgrounds>
     <backgrounds name="Stage 2">
       <background>background\bg_water</background>
@@ -228,6 +232,7 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\pre_init_dev_stuff.gml</script>
     <script>scripts\init.gml</script>
     <script>scripts\config.gml</script>
     <script>scripts\scr_start.gml</script>
@@ -247,7 +252,7 @@
       <script>scripts\music_start.gml</script>
       <script>scripts\random_sync.gml</script>
       <script>scripts\irandom_sync.gml</script>
-      <script>scripts\goto_stage.gml</script>
+      <script>scripts\go_to_stage.gml</script>
     </scripts>
     <scripts name="Menus">
       <script>scripts\scr_menu_step.gml</script>
@@ -260,11 +265,13 @@
       <script>scripts\timeline_run.gml</script>
       <scripts name="Stage 1">
         <script>scripts\scr_stage1.gml</script>
+        <scripts name="Midboss">
+          <script>scripts\scr_stg1_midboss1.gml</script>
+          <script>scripts\scr_stg1_midboss2.gml</script>
+        </scripts>
       </scripts>
       <scripts name="Stage 2">
         <script>scripts\scr_stage2.gml</script>
-        <script>scripts\scr_stage2_1.gml</script>
-        <script>scripts\scr_stage2_3.gml</script>
         <scripts name="Midboss">
           <script>scripts\scr_stg2_midboss1.gml</script>
           <script>scripts\scr_stg2_midboss2.gml</script>
@@ -276,6 +283,12 @@
       <script>scripts\scr_shot_collision1.gml</script>
       <script>scripts\scr_laser_collision.gml</script>
       <script>scripts\shot_create.gml</script>
+      <script>scripts\shot_create_instant.gml</script>
+      <script>scripts\laser_create.gml</script>
+      <scripts name="Patterns">
+        <script>scripts\shot_pattern_circle.gml</script>
+        <script>scripts\shot_pattern_arc.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Player">
       <script>scripts\scr_player_select.gml</script>
@@ -295,13 +308,13 @@
       <script>scripts\scr_medium_die.gml</script>
       <script>scripts\scr_strong_die.gml</script>
       <script>scripts\scr_boss_move.gml</script>
+      <script>scripts\scr_boss_move_random.gml</script>
       <script>scripts\scr_fairy_turn.gml</script>
     </scripts>
     <scripts name="Graphic Effects">
       <script>scripts\scr_particles.gml</script>
       <script>scripts\scr_motion_blur2.gml</script>
       <script>scripts\npc_die1.gml</script>
-      <script>scripts\shot_spawn1.gml</script>
       <script>scripts\shot_die1.gml</script>
       <script>scripts\shot_impact1.gml</script>
       <script>scripts\number_add_comma.gml</script>
@@ -349,11 +362,6 @@
       <object>objects\obj_drawBG</object>
       <object>objects\obj_draw_end</object>
     </objects>
-    <objects name="Core">
-      <object>objects\obj_game</object>
-      <object>objects\obj_replay_recorder</object>
-      <object>objects\terminal</object>
-    </objects>
     <objects name="Interface">
       <object>objects\obj_interface</object>
       <object>objects\obj_track_name</object>
@@ -369,7 +377,6 @@
           <object>objects\obj_replay_sel_stage</object>
           <object>objects\obj_options_menu</object>
           <object>objects\obj_rebind_menu</object>
-          <object>objects\obj_char_select_OLD</object>
         </objects>
       </objects>
       <objects name="Ingame Menus">
@@ -385,15 +392,29 @@
         </objects>
       </objects>
     </objects>
+    <objects name="Core">
+      <object>objects\obj_game</object>
+      <object>objects\obj_replay_recorder</object>
+      <object>objects\terminal</object>
+    </objects>
+    <objects name="Player related">
+      <object>objects\obj_player</object>
+      <object>objects\obj_char_orbs</object>
+      <object>objects\obj_player_sprite</object>
+      <object>objects\obj_full_power_text</object>
+    </objects>
     <objects name="Levels">
       <objects name="Test Level">
         <object>objects\obj_stage8</object>
         <object>objects\obj_3dBG_test</object>
+        <object>objects\obj_3dBG_test2</object>
       </objects>
       <object>objects\obj_background_parent</object>
       <object>objects\obj_level_intro</object>
       <object>objects\obj_ItemGet</object>
       <object>objects\obj_timeline</object>
+      <object>objects\obj_stage_parent</object>
+      <object>objects\obj_control_parent</object>
       <objects name="Stage 1">
         <object>objects\obj_stage1</object>
         <object>objects\obj_3dBG_stage1</object>
@@ -419,12 +440,6 @@
         <object>objects\obj_stage7</object>
         <object>objects\obj_3dBG_extra</object>
       </objects>
-    </objects>
-    <objects name="Player related">
-      <object>objects\obj_player</object>
-      <object>objects\obj_char_orbs</object>
-      <object>objects\obj_player_sprite</object>
-      <object>objects\obj_full_power_text</object>
     </objects>
     <objects name="Shots">
       <objects name="Player">
@@ -455,9 +470,10 @@
         <object>objects\obj_Claser</object>
         <object>objects\obj_curv_laser_prim</object>
       </objects>
+      <object>objects\obj_shot_create</object>
       <object>objects\obj_shot_parent0</object>
-      <object>objects\obj_shot_parent0_1</object>
-      <object>objects\obj_shot_parent0_5</object>
+      <object>objects\obj_shot_parent2</object>
+      <object>objects\obj_shot_parent3</object>
       <object>objects\obj_shot_parent1</object>
       <object>objects\obj_Claser_parent0</object>
       <object>objects\obj_prim_laser_parent</object>
@@ -474,16 +490,34 @@
           <object>objects\obj_stg1_control1</object>
           <object>objects\obj_stg1_enemy1</object>
           <object>objects\obj_stg1_shot1</object>
-          <object>objects\obj_stg1_greenthing</object>
-          <object>objects\obj_stg1_shot0</object>
+          <object>objects\obj_stg1_control2</object>
+          <object>objects\obj_stg1_enemy2</object>
+          <object>objects\obj_stg1_shot2_1</object>
+          <object>objects\obj_stg1_shot2_2</object>
+          <object>objects\obj_stg1_control3</object>
+          <object>objects\obj_stg1_enemy3</object>
+          <object>objects\obj_stg1_shot3</object>
+          <object>objects\obj_stg1_control4</object>
+          <object>objects\obj_stg1_control5</object>
+          <object>objects\obj_stg1_enemy5</object>
+          <objects name="Midboss Stg1">
+            <object>objects\obj_stg1_midboss</object>
+            <object>objects\obj_stg1_midboss_shot2</object>
+          </objects>
         </objects>
         <objects name="Stage 2">
+          <object>objects\obj_stg2_control1</object>
           <object>objects\obj_stg2_rock</object>
+          <object>objects\obj_stg2_control2</object>
           <object>objects\obj_stg2_meteor</object>
+          <object>objects\obj_stg2_control3</object>
           <object>objects\obj_stg2_bluething</object>
+          <object>objects\obj_stg2_control4</object>
+          <object>objects\obj_stg2_control5</object>
+          <object>objects\obj_stg2_control6</object>
           <object>objects\obj_stg2_shot1</object>
           <object>objects\obj_stg2_invis1</object>
-          <objects name="Midboss">
+          <objects name="Midboss Stg2">
             <object>objects\obj_stg2_midboss</object>
           </objects>
         </objects>
@@ -521,19 +555,6 @@
       <object>objects\obj_life_text</object>
     </objects>
   </objects>
-  <timelines name="timelines">
-    <timelines name="Stage 1">
-      <timeline>timelines\tl_stg1_tracker0</timeline>
-    </timelines>
-    <timelines name="Stage 2">
-      <timeline>timelines\tl_stg2_rocks</timeline>
-      <timeline>timelines\tl_stg2_meteor1</timeline>
-      <timeline>timelines\tl_stg2_bluethings</timeline>
-      <timeline>timelines\tl_stg2_meteor2</timeline>
-      <timeline>timelines\tl_stg2_meteor3</timeline>
-      <timeline>timelines\tl_stg2_invis1</timeline>
-    </timelines>
-  </timelines>
   <rooms name="rooms">
     <room>rooms\room_splash</room>
     <room>rooms\room_menu</room>

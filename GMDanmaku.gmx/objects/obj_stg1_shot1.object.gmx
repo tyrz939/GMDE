@@ -26,9 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-radius=global.shot1;
+radius=global.shot2;
 
 color = global.gray;
+
+timer = 0;
 </string>
           </argument>
         </arguments>
@@ -52,9 +54,10 @@ color = global.gray;
           <argument>
             <kind>1</kind>
             <string>if global.pause==0{
-    if spd &gt; 1 {
-        spd -= 6/30;
+    if timer == 10 {
+        spd -= 3;
     }
+    timer++;
     event_inherited();
 }
 </string>

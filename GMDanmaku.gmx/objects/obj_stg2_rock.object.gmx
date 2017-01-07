@@ -34,13 +34,13 @@ var scale = random_sync(0.4) + 0.5;
 speed = 4 * scale;
 
 event_inherited();
-death_col = c_white;
+death_col = c_aqua;
 
 
-image_xscale = choose(scale, -scale);
+image_xscale = scale;
 image_yscale = scale;
 
-direction = 270 + (irandom(30) - 15);
+direction = 270 + (irandom_sync(30) - 15);
 image_angle = direction + 90;
 </string>
           </argument>
@@ -96,7 +96,7 @@ scr_npc_die0(); //Death
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, make_colour_rgb(50,50,255), 1);
+            <string>draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, make_colour_rgb(175, 225, 255), 1);
 </string>
           </argument>
         </arguments>

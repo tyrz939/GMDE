@@ -135,7 +135,7 @@ switch run
             dir2 = dir1;
             for(var i = 0; i &lt; o; i++)
             {
-                shot_create( obj_arrow, shot[i],x+lengthdir_x(15,dir2),y+lengthdir_y(15,dir2),1,dir2);
+                shot_create( obj_arrow, shot[i],x+lengthdir_x(15,dir2),y+lengthdir_y(15,dir2),1,dir2, 16);
                 dir2 += 360/o;
             }
         }
@@ -210,6 +210,16 @@ switch run
                 action_create_object_motion(obj_curv_laser_prim,x+lengthdir_x(15,dir),y+lengthdir_y(15,dir),1,dir);
                 dir += 360/rep;
             }
+        }
+        break;
+    case 3:
+        if timer == 0 {
+            wait = 180;
+        }
+        if timer == wait {
+            wait += 180;
+            var d = point_direction(x, y, global.player_x, global.player_y);
+            shot_pattern_arc(obj_ball, RED, x, y, 8, 45, d, 2, 15, 16);
         }
         break;
 }

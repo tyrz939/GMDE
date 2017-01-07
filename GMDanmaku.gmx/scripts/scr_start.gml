@@ -6,21 +6,10 @@
 -----------------------------------------------------------------------*/
 
 /*
-    Level object to load for debugging/developement
-    obj_stage1
-    obj_extra
-    obj_testlvl
-    
-    
     Check level script for pos number
 */
 
-//    global.level = obj_stage1;
-//    global.level = obj_stage2;
-//    global.level = obj_extra;
-//    global.level = obj_testlvl;
-
-    global.levelpos = 1; // Default 1
+    global.levelpos = 1; // Position in level, Default 1
     global.spellstart = 1; // Starting Spell Card, Default 1
 
 // Player related variables:
@@ -33,9 +22,6 @@
     
     global.continues = 3; // Number of Continues (0-∞)
     global.can_save = true; // If you can save a replay or not
-    
-    global.player_x = global.xview / 2;
-    global.player_y = global.yview - 50;
 
 // Shot hitbox Radius's by number (Circles only)
 
@@ -58,5 +44,3 @@
     global.orange = c_orange;
     global.yellow = c_yellow;
     global.green = c_lime;
-    
-    global.pshot_impact = make_colour_rgb(255,150,255);

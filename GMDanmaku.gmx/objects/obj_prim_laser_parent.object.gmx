@@ -25,40 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spd = speed / rep;
-speed = 0;
-start = true;
-grazing = false;
-
-gzcol = make_colour_rgb(255,255,255);
-
-xd = x;
-yd = y;
-
-timer = 0;
-
-//start = 0;
-a *= rep;
-l = a;
-var d = 0;
-var c = 360 / a;
-for(var i = a; i &gt;= 0; i--){
-/* 0 = X, 1 = Y, 2 = Scale, 3 = Counter, 4 = Alive? 5 = Grazing */
-    obj[0,i] = x;
-    obj[1,i] = y;
-    obj[2,i] = 0.35;
-    obj[3,i] = 0 + d; // LENGTH * sin (DIRECTION * pi / 180);
-    obj[4,i] = true;
-    obj[5,i] = false;
-    obj[6,i] = direction;
-    d += c;
-}
-
-dir0 = 135;
-
-kill = false;
-sl = 0;
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -118,8 +85,8 @@ for(var i = 0; i &lt; a; i++)
     if d &lt; (0.7 * obj[2,i]) + 30
     {
         global.grazeSlow = 20;
-        global.graze += 0.01;
-        global.score += 5;
+        global.graze += 0.001;
+        global.score += 0.002;
         obj[5,i] = true;
         if d &lt; 0.7 * obj[2,i] &amp;&amp; obj[4,i]
         {

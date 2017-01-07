@@ -74,24 +74,20 @@ if (keyboard_check(vk_alt)) &amp;&amp; (keyboard_check(vk_f4)){
 }
 
 /*
-Sets if "pressed" or not
+Sets if "pressed" or "released"
 It's like this for the replay system, I know it sucks
-
-global.input:
-0 == keyborad
-
 */
 
 // Resets Variables
 
-    up=noone;
-    down=noone;
-    left=noone;
-    right=noone;
-    focus=noone;
-    bomb_press=noone;
-    shoot_press=noone;
-    esc=noone;
+up=noone;
+down=noone;
+left=noone;
+right=noone;
+focus=noone;
+bomb_press=noone;
+shoot_press=noone;
+esc=noone;
 
 if !global.term{
     // Keyboard Start!

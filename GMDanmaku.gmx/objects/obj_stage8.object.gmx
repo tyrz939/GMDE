@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>1</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_stage_parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,11 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>timer = 0;
-instance_create(0,0,obj_3dBG_test);
+background = obj_3dBG_test;
 //instance_create(0,0,obj_3dBG_extra);
 //instance_create(0,0,obj_3dBG_stage6);
 
-global.level = obj_testlvl;
+global.level = obj_stage8;
 
 /*
 Position in the level.
@@ -42,6 +42,8 @@ Position in the level.
 */
 
 pos = global.levelpos;
+
+event_inherited();
 </string>
           </argument>
         </arguments>

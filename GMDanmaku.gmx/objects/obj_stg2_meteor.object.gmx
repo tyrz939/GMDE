@@ -75,9 +75,9 @@ event_inherited();
 
 if wait &lt;= timer{
     wait += 30 - (global.difficulty * 5);
-    shot_create( obj_ball, RED, x, y, spd * 0.5, direction);
-    shot_create( obj_ball, RED, x, y, spd * 0.5, direction+15);
-    shot_create( obj_ball, RED, x, y, spd * 0.5, direction-15);
+    shot_create( obj_ball, RED, x, y, spd * 0.5, direction, 16);
+    shot_create( obj_ball, RED, x, y, spd * 0.5, direction+15, 16);
+    shot_create( obj_ball, RED, x, y, spd * 0.5, direction-15, 16);
 }
 
 image_angle = direction

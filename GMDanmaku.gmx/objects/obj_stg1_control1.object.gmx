@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_control_parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,37 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>timer = 0;
+            <string>event_inherited();
+timer = -180;
+
+wait0 = 15;
+wait1 = 30;
+
+x0 = 80;
+x1 = 320;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
 </string>
           </argument>
         </arguments>
@@ -49,28 +79,22 @@
           <argument>
             <kind>1</kind>
             <string>if global.pause == 0 {
-    timer++;
+    event_inherited();
+    
+    if timer &lt;= 600 {
+        if timer == wait0 {
+            wait0 += 30;
+            instance_create(x0, -20, obj_stg1_enemy1);
+            x0 += 5;
+        }
+        if timer == wait1 {
+            wait1 += 30;
+            instance_create(x1, -20, obj_stg1_enemy1);
+            x1 -= 5;
+        }
+    }
     switch timer {
-        case 30: instance_create(80, 0, obj_stg1_enemy1); break;
-        case 60: instance_create(320, 0, obj_stg1_enemy1); break;
-        case 90: instance_create(90, 0, obj_stg1_enemy1); break;
-        case 120: instance_create(310, 0, obj_stg1_enemy1); break;
-        case 150: instance_create(100, 0, obj_stg1_enemy1); break;
-        case 180: instance_create(300, 0, obj_stg1_enemy1); break;
-        case 210: instance_create(110, 0, obj_stg1_enemy1); break;
-        case 240: instance_create(290, 0, obj_stg1_enemy1); break;
-        case 270: instance_create(120, 0, obj_stg1_enemy1); break;
-        case 300: instance_create(280, 0, obj_stg1_enemy1); break;
-        case 330: instance_create(130, 0, obj_stg1_enemy1); break;
-        case 360: instance_create(270, 0, obj_stg1_enemy1); break;
-        case 390: instance_create(140, 0, obj_stg1_enemy1); break;
-        case 420: instance_create(260, 0, obj_stg1_enemy1); break;
-        case 450: instance_create(150, 0, obj_stg1_enemy1); break;
-        case 480: instance_create(250, 0, obj_stg1_enemy1); break;
-        case 510: instance_create(160, 0, obj_stg1_enemy1); break;
-        case 540: instance_create(240, 0, obj_stg1_enemy1); break;
-        case 570: instance_create(170, 0, obj_stg1_enemy1); break;
-        case 600: instance_create(230, 0, obj_stg1_enemy1); break;
+        case 600: instance_destroy(); break;
     }
 }
 </string>

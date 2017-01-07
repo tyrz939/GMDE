@@ -1,45 +1,26 @@
-///scr_boss_move(Dest_X, Dest_Y, Max Speed, Speed up/Slow down frame count)
-// 0 in Dest_X AND Dest_Y means it will pick random
-
-if argument0==0 && argument1==0
-    {
-    move_dist=0;
-    while move_dist<50
-        {
-        dest_x=irandom(300)+75;
-        dest_y=irandom(75)+100;
-        move_dist=distance_to_point(dest_x,dest_y);
-        }
-    }
-else if argument0==-1 && argument1==-1
-    {
-    move_dist=0;
-    while move_dist<50 || move_dist > 100
-        {
-        dest_x=irandom(300)+75;
-        dest_y=irandom(75)+100;
-        move_dist=distance_to_point(dest_x,dest_y);
-        }
-    }
-else
-    {
-    dest_x=argument0;
-    dest_y=argument1;
-    move_dist=distance_to_point(dest_x,dest_y);
-    }
-
-//Variables
-step_spd=argument2/argument3;
+///scr_boss_move(Dest_X, Dest_Y, Average Speed, Instant speedup?)
 
 //Create control object
-with instance_create(x,y,obj_boss_move)
-    {
-    function=0;
-    dest_x=other.dest_x;
-    dest_y=other.dest_y;
-    max_spd=other.argument2;
-    frames=other.argument3;
-    boss=other.id;
-    step_spd=other.step_spd;
-    distance=other.move_dist
+with instance_create(x, y, obj_boss_move) {
+    // Saving variables to object
+    start_x = other.x;
+    start_y = other.y;
+    var dest_x = other.argument0
+    var dest_y = other.argument1;
+    var avg_speed = other.argument2;
+    boss = other.id;
+    instant = argument3;
+    
+    if instant {
+        d = 0;
+    } else {
+        d = -90;
     }
+    
+    // Math stuff
+    dist = sqrt(sqr(start_x-dest_x)+sqr(start_y-dest_y));
+    dir = point_direction(start_x, start_y, dest_x, dest_y);
+    mid_x = start_x + ((dist * cos (dir * pi / 180)) * 0.5)
+    mid_y = start_y + ((dist * -sin (dir * pi / 180)) * 0.5)
+    frames = dist / avg_speed;
+}

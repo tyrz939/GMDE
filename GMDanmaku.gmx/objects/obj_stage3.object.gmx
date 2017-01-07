@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>1</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_stage_parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,19 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>timer = 0;
-//instance_create(0,0,obj_BG_stage2);
+            <string>background = noone;
 
 global.stage = 3;
 global.level = obj_stage3;
+stage_heading = "Stage 3";
+stage_subheading = "Error: Stage No Work!!";
 
 //Music
 if global.bgm{
-    music_start(bgm_stage1);
+//    music_start(bgm_stage1);
 }
-
-next = false;
-global.levelpos = 1;
+event_inherited();
 </string>
           </argument>
         </arguments>
@@ -87,20 +86,11 @@ global.levelpos = 1;
             <kind>1</kind>
             <string>//Level
 if global.pause==0{
-    if !global.replay{
-        if timer == 0 &amp;&amp; global.demo_play == false{
-            with instance_create(x,y,obj_level_intro){
-                text1="Stage 2";//Stage number Text
-                text2="Boarder Space";//Stage name Text
-            }
-        }
-        if timer == 120 &amp;&amp; global.demo_play == false{
-            instance_create(0,0,obj_ItemGet);
-        }
-    }
-    timer++;
+    event_inherited();
     // Level Script
-//    scr_stage3();
+    if global.level_run {
+//        scr_stage1();
+    }
 }
 </string>
           </argument>

@@ -29,86 +29,6 @@
 //Draw Particles
 part_system_drawit(global.Psys);
 
-//Draw Shots
-if instance_exists(obj_shot_parent0)
-    {
-    with obj_shot_parent0
-        {
-        if !grazing
-            {draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);}
-        else
-            {
-            if global.pause == 0
-                {
-                xd = x+(1-random(2));
-                yd = y+(1-random(2));
-                }
-            draw_sprite_ext(sprite_index, image_index, xd, yd, image_xscale, image_yscale, image_angle, global.graze_col, image_alpha);
-            }
-        }
-    }
-
-if instance_exists(obj_shot_parent0_1)
-    {
-    with obj_shot_parent0_1
-        {
-        if !grazing
-            {draw_sprite_ext(sprite_index,image_index,round(x),round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);}
-        else
-            {
-            if global.pause == 0
-                {
-                xd = x+(1-random(2));
-                yd = y+(1-random(2));
-                }
-            draw_sprite_ext(sprite_index, image_index, xd, yd, image_xscale, image_yscale, image_angle, global.graze_col, image_alpha);
-            }
-        }
-    }
-
-if instance_exists(obj_shot_parent1)
-    {
-    with obj_shot_parent1
-        {
-        if !grazing
-            {draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);}
-        else
-            {
-            if global.pause == 0
-                {
-                xd = x+(1-random(2));
-                yd = y+(1-random(2));
-                }
-            draw_sprite_ext(sprite_index, image_index, xd, yd, image_xscale, image_yscale, image_angle, global.graze_col, image_alpha);
-            }
-        }
-    }
-
-//Drawing Blend Mode Shots
-if instance_exists(obj_shot_parent0_5)
-    {
-    //draw_set_blend_mode(bm_add);
-    with obj_shot_parent0_5
-        {
-        if !grazing
-            {
-            draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-            draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-            }
-        else
-            {
-            if global.pause == 0
-                {
-                xd = x+(1-random(2));
-                yd = y+(1-random(2));
-                }
-            draw_sprite_ext(sprite_index, image_index, xd, yd, image_xscale, image_yscale, image_angle, global.graze_col, image_alpha);
-            draw_sprite_ext(sprite_index, image_index, xd, yd, image_xscale, image_yscale, image_angle, global.graze_col, image_alpha);
-            }
-        }
-    //draw_set_blend_mode(bm_normal);
-    }
-
 // Laser shots
 if instance_exists(obj_Claser_parent0)
 {
@@ -150,6 +70,86 @@ if instance_exists(obj_prim_laser_parent)
         draw_primitive_end();
     }
 }
+
+//Draw Shots
+if instance_exists(obj_shot_parent0)
+    {
+    with obj_shot_parent0
+        {
+        if !grazing
+            {draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);}
+        else
+            {
+            if global.pause == 0
+                {
+                xd = x+(1-random(2));
+                yd = y+(1-random(2));
+                }
+            draw_sprite_ext(sprite_index, image_index, xd, yd, image_xscale, image_yscale, image_angle, global.graze_col, image_alpha);
+            }
+        }
+    }
+
+if instance_exists(obj_shot_parent2)
+    {
+    with obj_shot_parent2
+        {
+        if !grazing
+            {draw_sprite_ext(sprite_index,image_index,round(x),round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);}
+        else
+            {
+            if global.pause == 0
+                {
+                xd = x+(1-random(2));
+                yd = y+(1-random(2));
+                }
+            draw_sprite_ext(sprite_index, image_index, xd, yd, image_xscale, image_yscale, image_angle, global.graze_col, image_alpha);
+            }
+        }
+    }
+
+if instance_exists(obj_shot_parent1)
+    {
+    with obj_shot_parent1
+        {
+        if !grazing
+            {draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);}
+        else
+            {
+            if global.pause == 0
+                {
+                xd = x+(1-random(2));
+                yd = y+(1-random(2));
+                }
+            draw_sprite_ext(sprite_index, image_index, xd, yd, image_xscale, image_yscale, image_angle, global.graze_col, image_alpha);
+            }
+        }
+    }
+
+//Drawing Blend Mode Shots
+if instance_exists(obj_shot_parent3)
+    {
+    //draw_set_blend_mode(bm_add);
+    with obj_shot_parent3
+        {
+        if !grazing
+            {
+            draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+            draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+            }
+        else
+            {
+            if global.pause == 0
+                {
+                xd = x+(1-random(2));
+                yd = y+(1-random(2));
+                }
+            draw_sprite_ext(sprite_index, image_index, xd, yd, image_xscale, image_yscale, image_angle, global.graze_col, image_alpha);
+            draw_sprite_ext(sprite_index, image_index, xd, yd, image_xscale, image_yscale, image_angle, global.graze_col, image_alpha);
+            }
+        }
+    //draw_set_blend_mode(bm_normal);
+    }
 </string>
           </argument>
         </arguments>

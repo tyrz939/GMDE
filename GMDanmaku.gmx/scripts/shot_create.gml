@@ -1,11 +1,16 @@
-///shot_create( Type, Color, X, Y, Speed, Direction)
+///shot_create( Type, Color, X, Y, Speed, Direction, Sub image count )
 
-with instance_create( argument2, argument3, argument0 ) {
-    image_index = other.argument1;
+audio_stop_sound(sfx_enemy_shoot);
+audio_play_sound(sfx_enemy_shoot, 1, false);
+
+with instance_create( argument2, argument3, obj_shot_create ) {
+    type = other.argument0
+    index = other.argument1;
     spd = other.argument4;
     direction = other.argument5;
+    sprite = noone;
     
-    if image_number == 8{
+    if other.argument6 == 8{
         switch other.argument1 {
             case GRAY8: color = c_ltgray; break;
             case RED8: color = c_red; break;
@@ -17,7 +22,8 @@ with instance_create( argument2, argument3, argument0 ) {
             case ORANGE8: color = c_orange; break;
             default: color = c_black; break;
         }
-    } else if image_number == 16 {
+        image_index = other.argument1 * 2;
+    } else if other.argument6 == 16 {
         switch other.argument1 {
             case GRAY: color = c_ltgray; break;
             case DKRED: color = c_red; break;
@@ -37,17 +43,20 @@ with instance_create( argument2, argument3, argument0 ) {
             case LTGRAY: color = c_ltgray; break;
             default: color = c_black; break;
         }
-    } else if image_number == 4 {
+        image_index = other.argument1;
+    } else if other.argument6 == 4 {
         switch other.argument1 {
-            case GRAY8: color = c_ltgray; sprite_index = spr_ani0; break;
-            case RED8: color = c_red; sprite_index = spr_ani1; break;
-            case PINK8: color = c_fuchsia; sprite_index = spr_ani2; break;
-            case BLUE8: color = c_blue; sprite_index = spr_ani3; break;
-            case AQUA8: color = c_aqua; sprite_index = spr_ani4; break;
-            case GREEN8: color = c_lime; sprite_index = spr_ani5; break;
-            case YELLOW8: color = c_yellow; sprite_index = spr_ani6; break;
-            case ORANGE8: color = c_orange; sprite_index = spr_ani7; break;
+            case GRAY8: color = c_ltgray; sprite = spr_ani0; break;
+            case RED8: color = c_red; sprite = spr_ani1; break;
+            case PINK8: color = c_fuchsia; sprite = spr_ani2; break;
+            case BLUE8: color = c_blue; sprite = spr_ani3; break;
+            case AQUA8: color = c_aqua; sprite = spr_ani4; break;
+            case GREEN8: color = c_lime; sprite = spr_ani5; break;
+            case YELLOW8: color = c_yellow; sprite = spr_ani6; break;
+            case ORANGE8: color = c_orange; sprite = spr_ani7; break;
             default: color = c_black; break;
         }
+        image_index = other.argument1 * 2;
     }
+    duration = 5;
 }

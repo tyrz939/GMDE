@@ -85,8 +85,8 @@ if z &gt; 500 {z -= 2;}
 
 
 // 3D Demo
-direction = 270 - ((global.player_x/20)-11.25)
-zdirection = 30 + ((global.player_y/60))
+//direction = 270 - ((global.player_x/20)-11.25)
+//zdirection = 30 + ((global.player_y/60))
 
 }
 </string>

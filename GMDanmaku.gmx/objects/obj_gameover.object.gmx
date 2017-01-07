@@ -110,7 +110,7 @@ if push == 1{
                 global.continues--;
                 global.game_over = false;
                 global.clear = true;
-                global.pow = 4;
+                global.pow = global.max_power;
                 global.score = 0;
                 global.can_save = false;
                 obj_game.deadTimer = 30;

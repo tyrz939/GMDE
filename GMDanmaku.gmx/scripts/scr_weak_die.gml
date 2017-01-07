@@ -11,15 +11,15 @@ if hp <=0
             {
             repeat(2)
                 {
-                instance_create(x+(random(50)-25),y+(random(50)-25),obj_power_block);
-                instance_create(x+(random(50)-25),y+(random(50)-25),obj_score_block);
+                instance_create(x+(random_sync(50)-25),y+(random_sync(50)-25),obj_power_block);
+                instance_create(x+(random_sync(50)-25),y+(random_sync(50)-25),obj_score_block);
                 }
             }
         else
             {
             repeat(3)
                 {
-                instance_create(x+(random(50)-25),y+(random(50)-25),obj_score_block);
+                instance_create(x+(random_sync(50)-25),y+(random_sync(50)-25),obj_score_block);
                 }
             }
         }

@@ -2,10 +2,10 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
-  <depth>2</depth>
+  <visible>-1</visible>
+  <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_enemy_shot</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,20 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spd = speed;
-speed = 0;
-grazed = false;
-start = true;
-grazing = false;
-
-xd = x;
-yd = y;
-
-shot_spawn1(c_white);
-
-image_speed = 0;
-
-//color = c_white;
+            <string>timer = 0;
+global.level_run = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.level_run = true;
 </string>
           </argument>
         </arguments>
@@ -61,24 +72,7 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x += (spd * cos (direction * pi / 180)) * global.gamespeed;
-y += (spd * -sin (direction * pi / 180)) * global.gamespeed;
-scr_shot_collision(); //Collision Script
-
-if global.clear==true //Clear Screen!
-    {
-    instance_destroy();
-    shot_die1(color);
-    if global.star==true
-        {
-        instance_create(x,y,obj_star_block);
-        }
-    }
-
-// Kill Shots
-if x&lt;-32 || x&gt;global.xview +32 || y&lt;-32 || y&gt;global.yview +32{
-    instance_destroy();
-}
+            <string>timer++;
 </string>
           </argument>
         </arguments>
@@ -96,8 +90,5 @@ if x&lt;-32 || x&gt;global.xview +32 || y&lt;-32 || y&gt;global.yview +32{
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>0,0</point>
-    <point>12,12</point>
-  </PhysicsShapePoints>
+  <PhysicsShapePoints/>
 </object>

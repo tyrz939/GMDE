@@ -51,7 +51,7 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &gt; 15{
+            <string>if y &gt; -15{
     var c = choose(make_colour_rgb(255,215,0), c_red, c_silver);
     part_particles_create_colour(global.Psys, x, y-15, global.part_mimpact, c, 1);
 }

@@ -36,12 +36,10 @@ for(var i = num; i &gt; 0; i--){
     bg[0, i] = irandom(global.xview+200)-100;
     bg[1, i] = -irandom(global.yview);
     bg[2, i] = spd - random(2);
-    bg[3, i] = random(0.4) + 0.1;
+    bg[3, i] = random(0.2) + 0.1;
     bg[4, i] = random(6) -3;
     bg[5, i] = irandom(359);
 }
-
-f = 0;
 </string>
           </argument>
         </arguments>
@@ -71,8 +69,8 @@ if !surface_exists(surf_tmp){
 surface_set_target(surf_tmp);
 
 if global.pause == 0{
-    draw_set_color(c_black);
-    draw_set_alpha(0.1);
+    draw_set_color(c_blue);
+    draw_set_alpha(0.2);
     draw_rectangle(0, 0, global.xview, global.yview, false);
     draw_set_alpha(1);
 
@@ -96,11 +94,11 @@ if global.pause == 0{
 
 for(var i = 0; i &lt; num; i++){
     if bg[1, i] &gt; 0{
-        var s = (bg[3, i] / global.yview * (bg[1, i]*2)) + 0.2;
+        var s = (bg[3, i] / global.yview * (bg[1, i]*2)) + 0.1;
     }else{
         var s = 0;
     }
-    draw_sprite_ext(spr_stg2_bg, 0, bg[0, i], bg[1, i], s, s, bg[5, i], make_colour_rgb(150,125,255), 0.95);
+    draw_sprite_ext(spr_stg2_bg, 0, bg[0, i], bg[1, i], s, s, bg[5, i], make_colour_rgb(255,255,255), 0.95);
 }
 
 surface_reset_target();

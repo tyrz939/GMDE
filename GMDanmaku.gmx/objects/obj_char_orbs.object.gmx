@@ -27,8 +27,10 @@
             <kind>1</kind>
             <string>set = true;
 
+orb_spawned_weapon = noone; // Stops a crash if no char is selected ??
 if global.orb_spawn != noone{
-    with instance_create(x, y, global.orb_spawn){
+    orb_spawned_weapon = instance_create(x, y, global.orb_spawn);
+    with orb_spawned_weapon {
         orb = other.id;
     }
 }
@@ -51,6 +53,33 @@ y_pos = 0;
 
 // For Kaede
 heat = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if orb_spawned_weapon != noone {
+    with orb_spawned_weapon {
+        instance_destroy();
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -115,10 +144,13 @@ heat = 0;
     
     /* ---- Orb Lag ---- */
     var dist = point_distance(x, y, global.player_x+x_pos, global.player_y+y_pos);
-    if dist &gt; 0.5{
+    if dist &gt; 0.5 {
         var dir = point_direction(x, y, global.player_x+x_pos, global.player_y+y_pos);
         x += lengthdir_x(dist, dir) / 5;
         y += lengthdir_y(dist, dir) / 5;
+    } else {
+        round(x);
+        round(y);
     }
 }
 </string>

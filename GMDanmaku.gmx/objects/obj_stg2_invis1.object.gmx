@@ -62,7 +62,7 @@ amount = 8;
         var spd = 4;
         var dir0 = point_direction(x, y, global.player_x, global.player_y);
         repeat re{
-            shot_create( obj_smallball, BLUE,x,y,spd,dir0)
+            shot_create( obj_smallball, BLUE,x,y,spd,dir0, 16)
             spd -=  3/re;
         }
     }

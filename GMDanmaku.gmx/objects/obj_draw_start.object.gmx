@@ -72,10 +72,10 @@
           <argument>
             <kind>1</kind>
             <string>if !surface_exists(global.surf_game){
-    global.surf_game = surface_create(global.xview,global.yview);
+    global.surf_game = surface_create(global.xview, global.yview);
 }
 surface_set_target(global.surf_game);
-draw_clear_alpha(c_black,0);
+draw_clear_alpha(c_black, 1);
 </string>
           </argument>
         </arguments>

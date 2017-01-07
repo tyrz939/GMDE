@@ -83,7 +83,7 @@ if input.bomb_press {
     instance_destroy();
     instance_activate_object(obj_menu);
     audio_stop_sound(sfx_menu_sel);
-    audio_play_sound(sfx_menu_sel,1,false);
+    audio_play_sound(sfx_menu_back,1,false);
     exit;
 }
 
@@ -97,10 +97,10 @@ if push == 1 {
         case 0: //BGM
             if global.bgm == 1 {
                 global.bgm = 0;
-                audio_stop_all();
+                scr_music_stop();
             } else {
                 global.bgm = 1;
-                audio_play_sound(bgm_menu,10,true);
+                music_start(bgm_menu);
             }
             break;
         case 1: //VSync

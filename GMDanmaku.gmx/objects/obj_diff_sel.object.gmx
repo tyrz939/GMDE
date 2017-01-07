@@ -65,40 +65,24 @@ alpha_dir = 0;
             <kind>1</kind>
             <string>scr_menu_step();
 
-if input.bomb_press
-{
+if input.bomb_press {
     instance_destroy();
     instance_activate_object(obj_menu);
     audio_stop_sound(sfx_menu_sel);
-    audio_play_sound(sfx_menu_sel,1,false);
+    audio_play_sound(sfx_menu_back,1,false);
     exit;
 }
 
 var push = 0;
 push = max(input.shoot_press,0);
 
-if push == 1
-{
+if push == 1 {
     audio_stop_sound(sfx_menu_sel);
     audio_play_sound(sfx_menu_sel,1,false);
-    instance_deactivate_object(self);
+//    instance_deactivate_object(self);
     ypos = tmp;
     room_goto(room_ingame);
-    switch mpos
-    {
-        case 0:
-            global.difficulty=0;
-            break;
-        case 1:
-            global.difficulty=1;
-            break;
-        case 2:
-            global.difficulty=2;
-            break;
-        case 3:
-            global.difficulty=3;
-            break;
-    }
+    global.difficulty = mpos;
 }
 
 tmp = 480-(256 * mpos);

@@ -54,8 +54,7 @@ col = c_fuchsia;
 event_inherited();
     
 //Score etc
-if collision_circle(x, y, pickup_dist, global.player, false, true)
-    {
+if point_distance(round(x), round(y), round(global.player_x), round(global.player_y)) &lt; pickup_dist {
     audio_play_sound(sfx_life,1,false);
     add = 1000;
     global.score += add;

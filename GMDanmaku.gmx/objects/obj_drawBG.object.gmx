@@ -75,8 +75,8 @@ draw_set_alpha(1);
 draw_clear_alpha(c_black,clear_alpha);
 //if surface_exists(global.surf_3d){
 //    draw_surface(global.surf_3d,0,0);
-//}
-draw_set_alpha(1);*/
+//}*/
+draw_set_alpha(1);
 
 if instance_exists(obj_boss_parent){
     if global.GFX{
@@ -85,16 +85,12 @@ if instance_exists(obj_boss_parent){
         }
         with obj_boss_parent{
             draw_sprite_ext(spr_bossbg2,0,x,y,1,1,0,make_colour_rgb(150,250,150),0.5);
-            if surface_exists(surf_distortion){
-                surface_set_target(surf_distortion);
-                draw_clear_alpha(c_black, 1);
-                draw_surface(global.surf_game,0,0);
-            }else{
+            if !surface_exists(surf_distortion){
                 surf_distortion = surface_create(global.xview,global.yview);
-                surface_set_target(surf_distortion);
-                draw_clear_alpha(c_black, 1);
-                draw_surface(global.surf_game,0,0);
             }
+            surface_set_target(surf_distortion);
+            draw_clear_alpha(c_black, 1);
+            draw_surface(global.surf_game,0,0);
             surface_reset_target();
             surface_set_target(global.surf_game);
             var center = shader_get_uniform(shd_boss,"center")
@@ -106,8 +102,9 @@ if instance_exists(obj_boss_parent){
         
             shader_set_uniform_f(center,xpos,ypos);
             shader_set_uniform_f(resolution,global.xview,global.yview);
-        
+            
             if surface_exists(surf_distortion){
+                draw_clear_alpha(c_black, 1);
                 draw_surface(surf_distortion,0,0);
             }
             shader_reset();

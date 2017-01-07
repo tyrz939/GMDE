@@ -25,25 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>rep = 1;
-col = global.yellow;
-a = 75;
-
-w0 = 4;
+            <string>w0 = 4;
 w1 = 1;
-
-//
-var rnd = irandom(6);
-switch rnd{
-    case 0: col = c_red; sprite_index = spr_Claser2; break;
-    case 1: col = c_fuchsia; sprite_index = spr_Claser4; break;
-    case 2: col = c_blue; sprite_index = spr_Claser6; break;
-    case 3: col = make_colour_rgb(0, 255, 255); sprite_index = spr_Claser8; break;
-    case 4: col = c_lime; sprite_index = spr_Claser10; break;
-    case 5: col = c_yellow; sprite_index = spr_Claser12; break;
-    case 6: col = c_orange; sprite_index = spr_Claser14; break;
-}
-//
 
 event_inherited();
 </string>
@@ -71,32 +54,6 @@ event_inherited();
             <string>if global.pause == 0{image_speed=0.2; repeat rep {
 
 event_inherited();
-
-//if timer &lt; 200
-//{
-    dir0 += 2  / rep;
-    direction += ((4 / rep) * -sin (dir0 * pi / 180));
-    if spd &lt; 2.5 / rep
-        {spd += 0.025 / rep;}
-//}
-
-// Test Direction thing
-/*
-var max_turn = 1.5;
-dir_player=angle_difference(direction, point_direction(x, y, global.player_x,global.player_y));
-dir_turn=(dir_player/(15-(spd*0.5)));
-if dir_turn&gt;max_turn {dir_turn=max_turn;} //Turn limit per frame
-else if dir_turn&lt;-max_turn {dir_turn=-max_turn;} //^
-direction-=dir_turn;
-*/
-// Cycle Colors
-/*
-if col_h &lt; 255
-    {col_h += 12;}
-else
-    {col_h = 0;}
-col = make_colour_hsv(col_h,175,255);
-*/
 
 }timer += 1 * global.gamespeed;}else{image_speed=0;}
 </string>

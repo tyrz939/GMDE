@@ -1,10 +1,7 @@
-global.debug = true; // Debug mode
 global.version = "0.10.0"; // Version
 global.name = "GMDE Development Build"; // Name
 
 global.text_pulse_color = make_color_rgb(255, 255, 255);
-
-
 
 global.graze_col = make_color_rgb(255, 200, 200);
 

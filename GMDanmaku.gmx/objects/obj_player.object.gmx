@@ -52,24 +52,54 @@
     shoot_press=false;
     bomb_press=false;
 
-// Replay Loader
-
-    if global.replay==true{
-        replay_load_binary();
-        frames=0;
-    }
-
 // Spawn Position
 
     start_counter = 0;
-    x = global.player_x;
-    y = global.player_y;
-    xstart = x;
-    ystart = 520;
+    global.player_x = global.xview / 2;
+    global.player_y = global.yview - 50;
+    xstart = global.player_x;
+    ystart = global.yview + 70;
 
 // Character Values
     
     scr_player_select(global.char);
+
+// Replay Loader
+
+    if global.replay==true {
+        replay_load_binary();
+        frames=0;
+        /// LOAD STATE
+        if load_state == true {
+            load_state = false;
+            
+            with global.level {
+                instance_destroy();
+            }
+        
+            // Set variables
+            var l = global.replay_load_spot;
+            global.player_x = state[0, l];
+            global.player_y = state[1, l];
+            global.life = state[2, l];
+            global.bombs = state[3, l];
+            global.pow = state[4, l];
+            global.frame = state[5, l];
+            global.level = state[7, l];
+            var inst = instance_create(0,0,global.level);
+            
+            global.seconds = state[6, l];
+            global.levelpos = state[8, l];
+            global.score = state[9, l];
+            wep_gcd = state[10, l];
+            global.graze = state[11, l];
+            global.point = state[12, l];
+            with inst {
+                event_perform(ev_step, ev_step_normal);
+            }
+            event_perform(ev_step, ev_step_normal);
+        }
+    }
 </string>
           </argument>
         </arguments>
@@ -92,55 +122,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// LOAD STATE
-if global.replay &amp;&amp; !global.pause &amp;&amp; load_state == true{
-    load_state = false;
-    
-    with global.level{
-        instance_destroy();
-    }
-
-    // Set variables
-    var l = global.replay_load_spot;
-    global.player_x = state[0, l];
-    global.player_y = state[1, l];
-    global.life = state[2, l];
-    global.bombs = state[3, l];
-    global.pow = state[4, l];
-    global.frame = state[5, l];
-    global.level = state[7, l];
-    instance_create(0,0,global.level);
-    global.seconds = state[6, l];
-    global.levelpos = state[8, l];
-    global.score = state[9, l];
-    wep_gcd = state[10, l];
-    global.graze = state[11, l];
-    global.point = state[12, l];
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>    /*==========================
     Input from player or replay
     ==========================*/
-if global.replay == false{
+if global.replay == false {
     // Player input
     if input.up == true {up=true;}
     else if input.up == false {up=false;}
@@ -162,9 +147,9 @@ if global.replay == false{
     
     if input.shoot_press == true {shoot_press=true;}
     else if input.shoot_press == false {shoot_press=false;}
-}else{
+} else {
     // Replay Input
-    while replay[FRAME,pos] &lt; global.frame &amp;&amp; pos &lt; replay_length{
+    while replay[FRAME,pos] &lt; global.frame &amp;&amp; pos &lt; replay_length {
         pos++;
     }
     if global.frame == replay[FRAME,pos]{
@@ -191,8 +176,7 @@ if global.replay == false{
     }
 }
 
-if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
-{
+if !global.pause &amp;&amp; global.life &gt;= 0 { // Pause thingy
     direction += 45;
     image_angle = direction;
     
@@ -202,14 +186,24 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
     
     // Round X,Y before saving replay.
     if cur_stage != global.stage || global.replay_save_state {
-        cur_stage = global.stage
+        cur_stage = global.stage;
         global.player_x = round(global.player_x);
         global.player_y = round(global.player_y);
         global.graze = round(global.graze);
-        if global.replay{
-            global.replay_save_state = false;
+        global.score = round(global.score);
+        global.replay_save_state = false;
+        wep_gcd = 0;
+        with obj_char_orbs {
+            instance_destroy();
         }
-    }else if start_counter == 0{
+        with obj_Pshot_parent {
+            instance_destroy();
+        }
+        with obj_pickup_parent {
+            instance_destroy();
+        }
+        global.clear = true;
+    } else if start_counter == 0 {
         // Diag speed normalizer
         
         if up==true xor down==true{
@@ -227,11 +221,9 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
         
         if focus==true{
             move1=2;
-            visible=1;
             global.shift=true;
         }else{
             move1=move2;
-            visible=0;
             global.shift=false;
         }
         
@@ -251,33 +243,44 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
             
         // Player Movement
         
-        if left == true &amp;&amp; global.player_x &gt; 15{
+        if left == true {
             global.player_x -= move * global.gamespeed;
             obj_player_sprite.left=true;
         }else{
             obj_player_sprite.left=false;
         }
         
-        if right == true &amp;&amp; global.player_x &lt; global.xview - 15{
+        if right == true {
             global.player_x += move * global.gamespeed;
             obj_player_sprite.right=true;
         }else{
             obj_player_sprite.right=false;
         }
         
-        if up == true &amp;&amp; global.player_y &gt; 20{
+        if up == true {
             global.player_y -= move * global.gamespeed;
         }
-        if down == true &amp;&amp; global.player_y &lt; global.yview - 20{
+        if down == true {
             global.player_y += move * global.gamespeed;
+        }
+        
+        // Game boundries
+        if global.player_x &lt; 10 {
+            global.player_x = 10;
+        }
+        if global.player_x &gt; global.xview - 10 {
+            global.player_x = global.xview - 10;
+        }
+        if global.player_y &lt; 20 {
+            global.player_y = 20;
+        }
+        if global.player_y &gt; global.yview - 15 {
+            global.player_y = global.yview - 15;
         }
     }else{
         start_counter -= 1;
         global.player_y -= 2;
     }
-    
-    x = global.player_x;
-    y = global.player_y;
 
     /*========================
         ORBS AND SHOOTING
@@ -289,7 +292,7 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
         instance_create(0,0, obj_full_power_text);
         audio_play_sound(sfx_full_power,1,false);
         global.clear = true;
-        with instance_create(x,y,obj_Pup_text){
+        with instance_create(global.player_x, global.player_y, obj_Pup_text){
             text = "MAX";
             col = c_yellow;
         }
@@ -300,16 +303,12 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
         at_max = false;
     }
     while instance_number(obj_char_orbs) &lt; floor(global.pow){
-        instance_create(x,y, obj_char_orbs);
+        instance_create(global.player_x, global.player_y, obj_char_orbs);
     }
 
     // Player Main Weapon
     if wep_gcd &gt; 0{
         wep_gcd--; // Weapon GCD Counter
-    }
-    
-    if global.orb_gcd&gt;0{
-        global.orb_gcd--; // Orb shot GCD Counter (GCD set in script)
     }
     
     if wep_gcd == 0 &amp;&amp; shoot_press == true &amp;&amp; global.in_dialog == false &amp;&amp; start_counter == 0{
@@ -321,7 +320,7 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
         
     // Bomb
     if bomb_press == true &amp;&amp; global.bomb == false &amp;&amp; global.bombs &gt; 0 &amp;&amp; global.in_dialog == false &amp;&amp; start_counter == 0{
-        instance_create(x, y, bomb_object); // Bomb
+        instance_create(global.player_x, global.player_y, bomb_object); // Bomb
         global.bomb=true;
         global.bombs-=1;
     }
@@ -331,7 +330,7 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
     }
     
     // Item Auto Collet
-    if y &lt; global.item_get_height{
+    if global.player_y &lt; global.item_get_height{
         global.collect = true;
     }else{
         global.collect = false;
@@ -347,8 +346,8 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
         respawn-=1;
         global.player_death=false;
     }
+    // Death Bomb Count Down
     if death_bomb_timer&gt;=0{
-        // Death Bomb Count Down
         death_bomb_timer-=1;
     }
     // Death Checker
@@ -361,8 +360,8 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
         // Spawn power-ups above death location
         if global.pow &gt; 1{
             for(var i = 1; i &lt; 10; i++){
-                var xs = x + lengthdir_x(75,30 + (i*12));
-                var ys = y + lengthdir_y(75,30 + (i*12));
+                var xs = global.player_x + lengthdir_x(75,30 + (i*12));
+                var ys = global.player_y + lengthdir_y(75,30 + (i*12));
                 instance_create(xs,ys,obj_power_block);
             }
         }
@@ -380,6 +379,8 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
         global.player_x = xstart;
         global.player_y = ystart;
     }
+    x = global.player_x;
+    y = global.player_y
 }
 </string>
           </argument>
@@ -406,7 +407,7 @@ if !global.pause &amp;&amp; global.life &gt;= 0 // Pause thingy
             <string>if global.life &gt;= 0{
     if global.shift=true{
         draw_set_alpha(1);
-        draw_self();
+        draw_sprite(sprite_index, image_index, global.player_x, global.player_y);
     }
 }
 </string>

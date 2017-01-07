@@ -1,5 +1,3 @@
-
-
 if global.fullscreen==1 {window_set_fullscreen(1);}
 if global.vsync==1 {display_reset(0, true);}
 //Resolution set:

@@ -151,6 +151,7 @@ if p &gt; 0 {
        if parameter_string(i + 1) == string("-skip") {skip = true;}
     }
 }
+pre_init_dev_stuff();
 </string>
           </argument>
         </arguments>

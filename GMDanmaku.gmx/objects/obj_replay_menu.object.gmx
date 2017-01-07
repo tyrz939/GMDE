@@ -133,6 +133,8 @@ if move != 0 {
 
 if input.bomb_press {
     instance_destroy();
+    audio_stop_sound(sfx_menu_sel);
+    audio_play_sound(sfx_menu_back,1,false);
     if load == true {
         instance_activate_object(obj_menu);
         exit;
@@ -142,8 +144,6 @@ if input.bomb_press {
         global.pause = 0;
         global.reset = 0;
     }
-    audio_stop_sound(sfx_menu_sel);
-    audio_play_sound(sfx_menu_sel,1,false);
 }
 
 var push = 0;
@@ -155,8 +155,6 @@ if push == 1 {
         if mpos == i {
             p = string("\replay" + string(i+1) + ".rpl");
             if load == true &amp;&amp; file_exists(working_directory + string(p)) {
-//                global.replay = true;
-//                room_goto(room_ingame);
                 global.rpl = string(p);
                 instance_deactivate_object(self);
                 instance_create(x,y,obj_replay_sel_stage);
@@ -307,8 +305,10 @@ if c != mpos
 // Draw end
 
 surface_reset_target();
-if surface_exists(surf)
-    {draw_surface(surf,0,0);}
+if surface_exists(surf) {
+    draw_set_alpha(1);
+    draw_surface(surf, 0, 0);
+}
 </string>
           </argument>
         </arguments>

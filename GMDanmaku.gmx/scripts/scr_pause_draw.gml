@@ -7,7 +7,7 @@ if e > 0.1{
     e -= e / 240;
     d += 2;
 }
-draw_sprite_ext(spr_pause_thing, 0, 130 + xvs, 575, 1, 1, dir, make_colour_rgb(200,150,255), 1);
+draw_sprite_ext(spr_pause_thing, 0, 130 + xvs, 575, 1, 1, dir, make_colour_rgb(255,150,150), 1);
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);

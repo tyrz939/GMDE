@@ -8,34 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>timer=0;
-
-slow=false;
-
-spd=speed;
-p=1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -53,60 +25,26 @@ p=1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.pause==0{speed=spd;
-if x==dest_x &amp;&amp; y==dest_y {instance_destroy();}
-
-if instance_exists(boss)
-{
-    // Get current distance to end position
-    distance1=distance_to_point(dest_x,dest_y);
-    // Direction set
-    direction=point_direction(x,y,dest_x,dest_y);
-    
-    // Speeds up
-    if timer&lt;frames &amp;&amp; speed&lt;max_spd
-    {
-        if distance1&gt;(distance*0.5)
-            {speed+=step_spd;}
-        else
-            {slow=true;}
-    }
-    
-    // Check where to start slowing down
-    if timer==0
-    {
-        i=0;
-        d=0;
-        while d&lt;max_spd{
-            d+=step_spd;
-            i+=d;
+            <string>if global.pause == 0 {
+    if instance_exists(boss) {
+        var move = (dist * sin (d * pi / 180));
+        if instant {
+            boss.x = start_x + lengthdir_x(move, dir);
+            boss.y = start_y + lengthdir_y(move, dir);
+            d += 90/frames;
+        } else {
+            move *= 0.5;
+            boss.x = mid_x + lengthdir_x(move, dir);
+            boss.y = mid_y + lengthdir_y(move, dir);
+            d += 180/frames;
         }
-    }
-    
-    // Check if should start slowing down
-    if i&gt;=distance1
-        {slow=true;}
-    
-    // Start slowing down
-    if slow==true
-        {speed-=step_spd;}
-        
-    // Clean up when speed is 0
-    if speed&lt;=0 &amp;&amp; slow==true
-    {
+        if d &gt;= 90 {
+            instance_destroy();
+        }
+    } else {
         instance_destroy();
-        x=dest_x; y=dest_y;
-        boss.x=x; boss.y=y;
     }
-    boss.x=x;
-    boss.y=y;
-}else{
-    instance_destroy();
 }
-
-timer++;
-
-spd=speed; p=1;}else{if p=1 {p=0;spd=speed; speed=0;}}
 </string>
           </argument>
         </arguments>

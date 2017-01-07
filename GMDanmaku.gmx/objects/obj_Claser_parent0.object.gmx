@@ -133,8 +133,8 @@ for(var i = 0; i &lt; a; i++)
         if d &lt; (6 * obj[2,i]) + 30
         {
             global.grazeSlow = 20;
-            global.graze += 0.05;
-            global.score += 25;
+            global.graze += 0.001;
+            global.score += 0.002;
             obj[5,i] = true;
             if d &lt; 6 * obj[2,i] // Hit box
             {

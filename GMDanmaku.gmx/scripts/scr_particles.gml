@@ -24,7 +24,7 @@ global.part_shot_die = part_type_create();
 part_type_shape(global.part_shot_die,pt_shape_ring);
 part_type_size(global.part_shot_die,0.2,0.2,0.04,0);
 part_type_scale(global.part_shot_die,0.5,0.5);
-part_type_alpha3(global.part_shot_die,1, 1, 0);
+part_type_alpha2(global.part_shot_die,1, 0);
 part_type_speed(global.part_shot_die,0,0,0,0);
 part_type_direction(global.part_shot_die,0,0,0,0);
 part_type_orientation(global.part_shot_die,0,359,0,0,1);
